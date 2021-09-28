@@ -1,0 +1,53 @@
+__________MULTISPECTRAL IMAGE CALIBRATION AND ANALYSIS TOOLBOX________________
+
+This toolbox was written by Jolyon Troscianko 2013-2017, funded by BBSRC grants
+to Martin Stevens. See http://www.jolyon.co.uk
+
+We release our code with a Creative Commons (BY) license. Licensees may copy,
+distribute, display and perform the work and make derivative works based on it 
+only if they give credit by citing our paper:
+Troscianko, J. & Stevens, M. (2015), Methods in Ecology & Evolution.
+
+
+DCRAW is written by David Coffin, and we include a version of DCRAW with the
+toolbox in line with the license for DCRAW.
+
+IJ-dcraw is a plugin for ImageJ written by Jarek Sacha, who kindly allowed us
+to distribute his plugin with this toolbox.
+
+Further credit should be given to the sources of the spectrum database:
+Arnold, S.E., Faruq, S., Savolainen, V., McOwan, P.W., and Chittka, L. (2010).
+FReD: the floral reflectance database—a web portal for analyses of flower colour.
+PloS One 5, e14287.
+
+And spectral sensitivity curves for various species.
+
+
+Introduction:
+~~~~~~~~~~~~~~~~
+
+Digital cameras can be powerful tools for measuring colours and patterns in a
+huge range of disciplines. However, in normal 'uncalibrated' digital photographs 
+the pixel values do not scale linearly with the amount of light measured by the 
+sensor. This means that pixel values cannot be reliably compared between
+different photos or even regions within the same photo unless the images are 
+calibrated to be linear and have any lighting changes controlled for. Some 
+scientists are aware of these issues, but lack convenient, user-friendly software 
+to work with calibrated images, while many others continue to measure uncalibrated 
+images. We have developed a toolbox that can calibrate images using many common 
+consumer digital cameras, and for some cameras the images can be converted to 
+“animal vision”, to measure how the scene might look to non-humans. Many animals 
+can see down into the ultraviolet (UV) spectrum, such as most insects, birds, 
+reptiles, amphibians, some fish and some mammals, so it is important to measure 
+UV when working with these animals. Our toolbox can combine photographs taken 
+through multiple colour filters, for example allowing you to combine normal 
+photographs with UV photographs and convert to animal vision across their whole 
+range of sensitivities.
+
+Installation:
+~~~~~~~~~~~~~~~~
+
+-This toolbox requires a working installation of ImageJ.
+-Place these files in your imagej/plugins folder.
+-See the user guide for more information.
+______________________________________________________________________________

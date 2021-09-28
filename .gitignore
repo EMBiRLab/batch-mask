@@ -1,0 +1,9 @@
+/data/
+/archive/
+/writing/
+/figures/
+/protocol_tutorials/
+/.ipynb_checkpoints/
+*.h5
+*.gdoc
+

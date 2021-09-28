@@ -1,0 +1,4 @@
+Goby Gobiusculus flavescens Weber Fractions at 0.05 (cone ratios from Pers. Comm. Utne-Palm & Bowmaker emailed Rafael Duarte, 9:25:13)
+lws	0.0693375245
+mws	0.05
+sws	0.0833333333

@@ -1,0 +1,13 @@
+RAB_3057_ventral
+uv:R:Normalised
+5
+120
+5.000000000
+Add
+1
+0
+0
+0
+255
+Linear
+

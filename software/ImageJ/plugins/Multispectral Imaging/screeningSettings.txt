@@ -1,0 +1,5 @@
+Visible & UV
+NEF,CR2,SRW,ORF,RW2
+0
+95,5
+1200
