@@ -17,6 +17,11 @@ Then, click on this cell block to compile the code:
 The colab script is now setup and ready to use!
 
 ## Upload and Check Dataset
+The labeled dataset for Snake maskig can be downloaded from this link: https://www.dropbox.com/sh/2a0gb2jsb0gmaiu/AABJtSIZCUf9suE3x8l8XaY5a?dl=0.
+Alternatively, you may follow the tutorial for creating and labeling you own dataset in ImageJ.
+Create a folder in google drive to contain the dataset. We name the folder "train_val_sets". From here, you can create multiple folders as subsets of a dataset. We divided the snake dataset into two subsets, dorsal and ventral. This is useful for comparing results from training on specific subsets. If you only need one subset for you dataset, then make a single folder. Note, the subset folders cannot be named "all".
+
+![image](https://user-images.githubusercontent.com/44889226/138954861-6756506c-6259-4aab-add6-e27adc9a8041.png)
 
 ## Creating A Log Folder
 
