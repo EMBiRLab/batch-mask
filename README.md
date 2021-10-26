@@ -1,6 +1,9 @@
 # Batch Mask
 ## Cloning Repo
-Clone the repo and upload it to google drive. Alternatively, you may download the google drive app and clone the repo directly into the drive.
+Download the master repo, extract it, and upload it to google drive.
+You can download the repo by clicking on "code", then "download zip":
+![DownloadCode](https://user-images.githubusercontent.com/44889226/138960683-d2807e50-aa58-473e-9da0-fbf5c1b9ee13.png)
+
 Navigate to the repo in google drive and open batch_mask.ipynb in google colab by right clicking on the file, then clicking open with and selecting google colab. If google colab isn't available, you may have to select "connect more apps" and add the google colab app.
 
 ## Setup
@@ -16,21 +19,83 @@ Then, click on this cell block to compile the code:
 
 The colab script is now setup and ready to use!
 
-## Upload and Check Dataset
-The labeled dataset for Snake maskig can be downloaded from this link: https://www.dropbox.com/sh/2a0gb2jsb0gmaiu/AABJtSIZCUf9suE3x8l8XaY5a?dl=0.
-Alternatively, you may follow the tutorial for creating and labeling you own dataset in ImageJ.
-Create a folder in google drive to contain the dataset. We name the folder "train_val_sets". From here, you can create multiple folders as subsets of a dataset. We divided the snake dataset into two subsets, dorsal and ventral. This is useful for comparing results from training on specific subsets. If you only need one subset for you dataset, then make a single folder. Note, the subset folders cannot be named "all".
 
-![image](https://user-images.githubusercontent.com/44889226/138954861-6756506c-6259-4aab-add6-e27adc9a8041.png)
+## Copying File Paths in Colab
+You can copy a file or folder path in colab by right clicking on the file/folder in the files view and selecting "copy path".
+![copy_path](https://user-images.githubusercontent.com/44889226/138969645-22731987-f005-436a-bffa-02dde2ad9e7a.png)
 
 ## Creating A Log Folder
+The colab script contains a code cell that will automatically. Set the log_dir to be the directory that you want your log folder to be located, and set the dataset_dir to the dataset directory.
 
-## Training
+![gen_log](https://user-images.githubusercontent.com/44889226/138967351-bda00021-0c47-4f61-afc2-2a7f8a220eb3.png)
 
-## Viewing Loss Values
+## Upload Datasets
+Create a "dataset" folder in google drive to contain all of the datasets.
+Specify the dataset path in the config file contained in the log folder:
+![dataset_dir](https://user-images.githubusercontent.com/44889226/138972995-0498a16f-c4e0-46b7-b883-8895da3ca341.png)
 
-## Evaluation Metrics
+If you plan on training the neural network, make a folder in the dataset folder to contain the training dataset. From there, create subfolders for each subset of the dataset. We divided the snake dataset into two subsets, dorsal and ventral. This is useful for comparing results from training on specific subsets. If you only need one subset for your dataset, then make a single folder. Note, the subset folders **cannot** be named "all".
+
+Specify the training set folder in the config file contained in the log folder:
+
+![training_dir](https://user-images.githubusercontent.com/44889226/138973171-e7d205cf-1c07-473c-a39a-96678ec6b459.png)
+
+The training dataset for Snake masking can be downloaded from this link: https://www.dropbox.com/sh/bsmaopj8rr9z014/AABowTCMNJGJ6BV6keQToQhaa?dl=0.
+Download the ventral_set and dorsal_set folders and upload them to the training folder.
+Alternatively, you may follow the tutorial for creating and labeling you own dataset in ImageJ.
+
+If you want use the neural network to detect the mask on a folder of images, simply upload the folder to the dataset folder and specify the folder in the config file contained in the log folder:
+
+![specify_test_set](https://user-images.githubusercontent.com/44889226/138973368-ab73eb5f-d9fa-4bbf-a3ad-c702aa6878d2.png)
+
+If you wish to run the neural network on the test set we used, the download is located here: 
+
+## Check Dataset
+You may check the dataset by running the check dataset cell block. Before, running the cell block, set image_path to the path of the folder containing the dataset images, set label_path to the path of the folder containing the labels, set the start and end value to be the range of images to check (we suggest checking in batches of 50 because of limited ram resources), and set the mode to either "json" or "binary" depending on the type of label.
+![check dataset](https://user-images.githubusercontent.com/44889226/138973479-477136fe-0524-4482-b645-c01e7ef0b2e8.png)
+
+##Training the Neural Network
+
+### Training Process
+After a log file has been created and the dataset are uploaded to google drive, you can begin the training process.
+First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file (https://www.dropbox.com/s/tt1u307y0p3nyhf/snake_epoch_16.h5?dl=0). However, you must upload the weight file to google drive and specify the path to the weight file in the config file:![specify_weights](https://user-images.githubusercontent.com/44889226/138974367-0fc17a0a-f137-4fa2-8c6f-f8e61c240b82.png)
+
+You may also change the training parameters in the config file to yield better training results.
+
+Specify the config file path in the training cell block and run the cell block to begin training. It took us ~x hours to finish the training proccess.
+![Paste_config_file_path](https://user-images.githubusercontent.com/44889226/138974760-4f01a4f7-e64c-46f6-8da7-e86dc7837aa1.png)
+
+If the training process stop because colab times out, you may resume the training process by setting the training weights to the last weight file save, which can be found in the weights folder contained in your logs folder. Running the cell block will then resume the training process with those weights. The number of epochs does **not** have to be changed. The code will automatically detect how many epoch are remaining.
+
+### Viewing Loss Values
+Once the training process is finished, you may view the loss values by specifying the weights ouput folder (which should be located under the weights folder in the log directory) and running this cell block:
+![image](https://user-images.githubusercontent.com/44889226/138975279-85428283-8268-489e-83d5-3b770a3619f7.png)
+
+After viewing the loss values, choose an epoch for inference and copy and paste the associated weight file path into the config file for inference and evaluation metrics:
+
+![specify_test_weights](https://user-images.githubusercontent.com/44889226/138975784-36ea2927-4811-4e6a-a665-e51039b1f716.png)
+
+### Evaluation Metrics
+
+You can obtain the average IOU or IOL metrics for the validation partition for each subset of the training set.
+Copy and paste the config file path into this cell block and run it:
+
+![metric path](https://user-images.githubusercontent.com/44889226/138975816-26ca2827-c474-486f-abab-ef71a69dffa6.png)
+
+The evalution metrics are run using the test weights specified in the config file.
 
 ## Inference
+To generate masks for an unlabeled set of images, specify the config file path, choose the output type, and run the inference cell block:
+![image](https://user-images.githubusercontent.com/44889226/138976272-3de1b8ae-a1c8-4e45-96ce-618e85d17b9d.png)
+
+The output types are as follows: "json", "binary", and "splash".
+* "json" will output the mask in the same format as the json files used for training.
+* "binary" will output the mask as a csv file with each cell containing a zero or a one. This is the most universall style of output.
+* "splash" will output a copy of the original image but with a blue background. This is a non-functional output but can be used to determine the qualitative performance of the neural network.
+
+The inference is run on the test set folder specified in the config file using the test weight file specified in the config file. If you did not train the neural network and you wish to use our weights you can download and upload them to google drive.
+You can find our weights here: https://www.dropbox.com/s/tt1u307y0p3nyhf/snake_epoch_16.h5?dl=0
+
+## Creating A Metadata File
 
 # ImageJ
