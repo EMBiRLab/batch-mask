@@ -96,6 +96,10 @@ The output types are as follows: "json", "binary", and "splash".
 The inference is run on the test set folder specified in the config file using the test weight file specified in the config file. If you did not train the neural network and you wish to use our weights you can download and upload them to google drive.
 You can find our weights here: https://www.dropbox.com/s/tt1u307y0p3nyhf/snake_epoch_16.h5?dl=0
 
+The output folders are already specified in the config file and are located in the logs folder.
+
+If you need to resume the inference because colab timed out, you may set resume to true and it will pickup based on the last output file in the output folder.
+
 ## Creating A Metadata File
 
 # ImageJ
