@@ -54,7 +54,7 @@ If you wish to run the neural network on the test set we used, the download is l
 You may check the dataset by running the check dataset cell block. Before, running the cell block, set image_path to the path of the folder containing the dataset images, set label_path to the path of the folder containing the labels, set the start and end value to be the range of images to check (we suggest checking in batches of 50 because of limited ram resources), and set the mode to either "json" or "binary" depending on the type of label.
 ![check dataset](https://user-images.githubusercontent.com/44889226/138973479-477136fe-0524-4482-b645-c01e7ef0b2e8.png)
 
-##Training the Neural Network
+## Training the Neural Network
 
 ### Training Process
 After a log file has been created and the dataset are uploaded to google drive, you can begin the training process.
