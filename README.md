@@ -102,6 +102,10 @@ If you need to resume the inference because colab timed out, you may set resume 
 
 ## Creating A Metadata File
 
+![image](https://user-images.githubusercontent.com/44889226/139880037-a2f35d5e-71af-4ab9-9e79-15e8f360e4c2.png)
+
+The meta data file is an optional ".csv" file that will name the mask rois based off the data to the right of column A. Column A corresponds to the name of the source image, and the roi will be named using the scheme "ColumnB_ColumnC_ColumnD_...". For example, the mask roi for the first image would be named "RAB_249_d_uv".
+
 # ImageJ
 
 ## Setup
