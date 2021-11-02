@@ -103,3 +103,46 @@ If you need to resume the inference because colab timed out, you may set resume 
 ## Creating A Metadata File
 
 # ImageJ
+
+## Setup
+Download the master repo and extract it.
+You can download the repo by clicking on "code", then "download zip":
+![DownloadCode](https://user-images.githubusercontent.com/44889226/138960683-d2807e50-aa58-473e-9da0-fbf5c1b9ee13.png)
+Navigate to batch-mask -> software -> ImageJ and run ImageJ.exe
+
+## Labeling Datasets
+
+Open up the image to label inside ImageJ by either dragging it or going to File/Open
+
+Press 't' to bring up the roi manager.
+
+![First](https://user-images.githubusercontent.com/44889226/139877877-60fb4075-8d9c-472e-9f84-9bd9d32d04ce.PNG)
+
+Select the polygon tool to outline the mask of the specimen in the image.
+
+For a specimen that is coiled (ex, a snake), first outline the entire specimen, then go to Edit/Selection/Make Inverse to invert the selection
+
+![Second](https://user-images.githubusercontent.com/44889226/139877914-aed015f3-aea0-4e54-9d95-d515eb1300e5.PNG)
+
+Then while pressing shift select the parts within the original selection that are not part of the specimen. This will create a composite (donut-like) shape.
+
+![Third](https://user-images.githubusercontent.com/44889226/139877954-0418f957-1a48-4981-9897-da83da022239.PNG)
+
+Finally, go to Edit/Selection/Make Inverse to invert the selection again. Click add on the roi manager (or 't' for a shortcut), select the roi from the roi manager, and click rename to rename the roi to 'mask'.
+
+If the specimen is not coiled, then simply use the polygon tool to outline the specimen. Click add on the roi manager (or 't' for a shortcut), select the roi from the roi manager, and click rename to rename the roi to 'mask'.
+
+![Fourth](https://user-images.githubusercontent.com/44889226/139879168-a24fdd3a-68b1-4098-8c4e-3c67079e47f1.PNG)
+
+To export the labels to a json file, go to Plugins/JSON ROI/export and a save dialogue will pop up. The default name for the json file will be the same as the image file. There is no need to change the name since the training script links the json file to the jpeg file by filenames. Just click save.
+
+![Fifth (1)](https://user-images.githubusercontent.com/44889226/139879284-c5771605-d571-4f5a-a103-a4f695b51548.PNG)
+
+Close roi manager and the current open image before moving on to the next image. Click discard to any save messages that pop up after closing any windows.
+
+## Editing Labels
+
+If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins/JSON ROI/import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
+
+## Batch Generating MSPEC files for MicaToolBox
+
