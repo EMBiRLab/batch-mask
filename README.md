@@ -2,6 +2,7 @@
 ## Cloning Repo
 Download the master repo, extract it, and upload it to google drive.
 You can download the repo by clicking on "code", then "download zip":
+
 ![DownloadCode](https://user-images.githubusercontent.com/44889226/138960683-d2807e50-aa58-473e-9da0-fbf5c1b9ee13.png)
 
 Navigate to the repo in google drive and open batch_mask.ipynb in google colab by right clicking on the file, then clicking open with and selecting google colab. If google colab isn't available, you may have to select "connect more apps" and add the google colab app.
@@ -58,17 +59,21 @@ You may check the dataset by running the check dataset cell block. Before, runni
 
 ### Training Process
 After a log file has been created and the dataset are uploaded to google drive, you can begin the training process.
-First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file (https://www.dropbox.com/s/tt1u307y0p3nyhf/snake_epoch_16.h5?dl=0). However, you must upload the weight file to google drive and specify the path to the weight file in the config file:![specify_weights](https://user-images.githubusercontent.com/44889226/138974367-0fc17a0a-f137-4fa2-8c6f-f8e61c240b82.png)
+First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file (https://www.dropbox.com/s/tt1u307y0p3nyhf/snake_epoch_16.h5?dl=0). However, you must upload the weight file to google drive and specify the path to the weight file in the config file:
+
+![specify_weights](https://user-images.githubusercontent.com/44889226/138974367-0fc17a0a-f137-4fa2-8c6f-f8e61c240b82.png)
 
 You may also change the training parameters in the config file to yield better training results.
 
 Specify the config file path in the training cell block and run the cell block to begin training. It took us ~x hours to finish the training proccess.
+
 ![Paste_config_file_path](https://user-images.githubusercontent.com/44889226/138974760-4f01a4f7-e64c-46f6-8da7-e86dc7837aa1.png)
 
 If the training process stop because colab times out, you may resume the training process by setting the training weights to the last weight file save, which can be found in the weights folder contained in your logs folder. Running the cell block will then resume the training process with those weights. The number of epochs does **not** have to be changed. The code will automatically detect how many epoch are remaining.
 
 ### Viewing Loss Values
 Once the training process is finished, you may view the loss values by specifying the weights ouput folder (which should be located under the weights folder in the log directory) and running this cell block:
+
 ![image](https://user-images.githubusercontent.com/44889226/138975279-85428283-8268-489e-83d5-3b770a3619f7.png)
 
 After viewing the loss values, choose an epoch for inference and copy and paste the associated weight file path into the config file for inference and evaluation metrics:
@@ -111,8 +116,10 @@ The meta data file is an optional ".csv" file that will name the mask rois based
 ## Setup
 Download the master repo and extract it.
 You can download the repo by clicking on "code", then "download zip":
+
 ![DownloadCode](https://user-images.githubusercontent.com/44889226/138960683-d2807e50-aa58-473e-9da0-fbf5c1b9ee13.png)
-Navigate to batch-mask -> software -> ImageJ and run ImageJ.exe
+
+Navigate to batch-mask/software/ImageJ and run ImageJ.exe
 
 ## Labeling Datasets
 
@@ -124,7 +131,7 @@ Press 't' to bring up the roi manager.
 
 Select the polygon tool to outline the mask of the specimen in the image.
 
-For a specimen that is coiled (ex, a snake), first outline the entire specimen, then go to Edit/Selection/Make Inverse to invert the selection
+For a specimen that is coiled (ex, a snake), first outline the entire specimen, then go to Edit->Selection->Make Inverse to invert the selection
 
 ![Second](https://user-images.githubusercontent.com/44889226/139877914-aed015f3-aea0-4e54-9d95-d515eb1300e5.PNG)
 
@@ -132,13 +139,13 @@ Then while pressing shift select the parts within the original selection that ar
 
 ![Third](https://user-images.githubusercontent.com/44889226/139877954-0418f957-1a48-4981-9897-da83da022239.PNG)
 
-Finally, go to Edit/Selection/Make Inverse to invert the selection again. Click add on the roi manager (or 't' for a shortcut), select the roi from the roi manager, and click rename to rename the roi to 'mask'.
+Finally, go to Edit->Selection->Make Inverse to invert the selection again. Click add on the roi manager (or 't' for a shortcut), select the roi from the roi manager, and click rename to rename the roi to 'mask'.
 
 If the specimen is not coiled, then simply use the polygon tool to outline the specimen. Click add on the roi manager (or 't' for a shortcut), select the roi from the roi manager, and click rename to rename the roi to 'mask'.
 
 ![Fourth](https://user-images.githubusercontent.com/44889226/139879168-a24fdd3a-68b1-4098-8c4e-3c67079e47f1.PNG)
 
-To export the labels to a json file, go to Plugins/JSON ROI/export and a save dialogue will pop up. The default name for the json file will be the same as the image file. There is no need to change the name since the training script links the json file to the jpeg file by filenames. Just click save.
+To export the labels to a json file, go to Plugins->JSON ROI->export and a save dialogue will pop up. The default name for the json file will be the same as the image file. There is no need to change the name since the training script links the json file to the jpeg file by filenames. Just click save.
 
 ![Fifth (1)](https://user-images.githubusercontent.com/44889226/139879284-c5771605-d571-4f5a-a103-a4f695b51548.PNG)
 
@@ -146,7 +153,7 @@ Close roi manager and the current open image before moving on to the next image.
 
 ## Editing Labels
 
-If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins/JSON ROI/import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
+If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins->JSON ROI->import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
 
 ## Batch Generating MSPEC files for MicaToolBox
 
