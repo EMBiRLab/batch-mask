@@ -127,7 +127,7 @@ Open up the image to label inside ImageJ by either dragging it or going to File/
 
 Press 't' to bring up the roi manager.
 
-![First](https://user-images.githubusercontent.com/44889226/139877877-60fb4075-8d9c-472e-9f84-9bd9d32d04ce.PNG)
+![139877877-60fb4075-8d9c-472e-9f84-9bd9d32d04ce](https://user-images.githubusercontent.com/44889226/142041235-e7e10a6d-6d60-4fca-b44a-a0e4719ee644.png)
 
 Select the polygon tool to outline the mask of the specimen in the image.
 
@@ -143,7 +143,7 @@ Finally, go to Edit->Selection->Make Inverse to invert the selection again. Clic
 
 If the specimen is not coiled, then simply use the polygon tool to outline the specimen. Click add on the roi manager (or 't' for a shortcut), select the roi from the roi manager, and click rename to rename the roi to 'mask'.
 
-![Fourth](https://user-images.githubusercontent.com/44889226/139879168-a24fdd3a-68b1-4098-8c4e-3c67079e47f1.PNG)
+![139879168-a24fdd3a-68b1-4098-8c4e-3c67079e47f1](https://user-images.githubusercontent.com/44889226/142041318-6b221c61-c3fd-4c98-ab67-5d3232920cd5.png)
 
 To export the labels to a json file, go to Plugins->JSON ROI->export and a save dialogue will pop up. The default name for the json file will be the same as the image file. There is no need to change the name since the training script links the json file to the jpeg file by filenames. Just click save.
 
