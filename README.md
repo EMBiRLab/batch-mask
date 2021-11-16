@@ -166,7 +166,7 @@ If exported labels need to be edited for any reason, open the image, press 't' t
 
 ![gen_custom](https://user-images.githubusercontent.com/44889226/142066628-60d77a5b-683e-4c6f-bd53-36a40e6c84d2.png)
 ![import_mica](https://user-images.githubusercontent.com/44889226/142066631-195becca-3ec0-46df-8a25-b6311e552de6.png)
-![5_percent](https://user-images.githubusercontent.com/44889226/142066644-b222b05d-806e-4a49-9d27-d4f62dbad13d.png)
+![5_percent](https://user-images.githubusercontent.com/44889226/142067813-16bdb2c7-e381-48b6-a554-bba03bbb93f1.png)
 ![95_percent](https://user-images.githubusercontent.com/44889226/142066651-9e6fc702-0425-4f7b-b091-89afe4915261.PNG)
 ![image](https://user-images.githubusercontent.com/44889226/142065784-fc1aab3c-e211-469c-b76b-5247374a5138.png)
 
