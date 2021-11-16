@@ -164,13 +164,13 @@ If exported labels need to be edited for any reason, open the image, press 't' t
 ## Batch Generating MSPEC files for MicaToolBox
 Place the json files generated from Batch-Mask in a folder with the source images (see example below).
 ![image](https://user-images.githubusercontent.com/44889226/142065871-a1121d8d-5b0c-4fe1-8cf0-7f3f9d509156.png)
-Navigate to batch-mask-main/software/ImageJ/plugins/Multispectral Imaging/ and open \_Generate_Multispectral_Image_Custom.ijm in a text editor.
+Navigate to "batch-mask-main/software/ImageJ/plugins/Multispectral Imaging/" and open "\_Generate_Multispectral_Image_Custom.ijm" in a text editor.
 On line 55, set the directory variable to the directory that the json files and source images are stored.
 On line 56, set resume to "" is starting from the beginning, otherwise set it to the name of the image to start from (ex. "V8.jpg").
 
 ![gen_custom](https://user-images.githubusercontent.com/44889226/142077579-2b0883a1-04c7-4798-802d-8ba76bb32671.png)
 
-Navigate to batch-mask-main/software/ImageJ/plugins/JSON ROI/ and open mica_import.py in a text editor.
+Navigate to "batch-mask-main/software/ImageJ/plugins/JSON ROI/" and open "mica_import.py" in a text editor.
 On line 31, set the directory variable to the directory that the json files and source images are stored.
 ![import_mica](https://user-images.githubusercontent.com/44889226/142066631-195becca-3ec0-46df-8a25-b6311e552de6.png)
 ![5_percent](https://user-images.githubusercontent.com/44889226/142067813-16bdb2c7-e381-48b6-a554-bba03bbb93f1.png)
