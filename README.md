@@ -168,10 +168,10 @@ Navigate to batch-mask-main/software/ImageJ/plugins/Multispectral Imaging/ and o
 On line 55, set the directory variable to the directory that the json files and source images are stored.
 On line 56, set resume to "" is starting from the beginning, otherwise set it to the name of the image to start from (ex. "V8.jpg").
 
+![gen_custom](https://user-images.githubusercontent.com/44889226/142077579-2b0883a1-04c7-4798-802d-8ba76bb32671.png)
+
 Navigate to batch-mask-main/software/ImageJ/plugins/JSON ROI/ and open mica_import.py in a text editor.
 On line 31, set the directory variable to the directory that the json files and source images are stored.
-
-![gen_custom](https://user-images.githubusercontent.com/44889226/142066628-60d77a5b-683e-4c6f-bd53-36a40e6c84d2.png)
 ![import_mica](https://user-images.githubusercontent.com/44889226/142066631-195becca-3ec0-46df-8a25-b6311e552de6.png)
 ![5_percent](https://user-images.githubusercontent.com/44889226/142067813-16bdb2c7-e381-48b6-a554-bba03bbb93f1.png)
 ![95_percent](https://user-images.githubusercontent.com/44889226/142066651-9e6fc702-0425-4f7b-b091-89afe4915261.PNG)
