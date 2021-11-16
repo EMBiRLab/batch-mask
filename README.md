@@ -162,11 +162,15 @@ Close roi manager and the current open image before moving on to the next image.
 If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins->JSON ROI->import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
  
 ## Batch Generating Multispectral Images for MicaToolBox
+
 **Note, this portion of the tutorial can only be run on a Windows operating system**
 
 Place the json files containing the labels for the masks and scale bars in a folder with the source images (see example below).
+
 If you want to use the images from our dataset, you must use these the non-color corrected image: https://www.dropbox.com/sh/bt8blkl2sjndj22/AAAjVJJDyTZ6pm2F4AVsiVS7a?dl=0
+
 The human labeld json files are located here: https://www.dropbox.com/sh/2a0gb2jsb0gmaiu/AABJtSIZCUf9suE3x8l8XaY5a?dl=0
+
 The json files generated from Batch-Mask are located here:  https://www.dropbox.com/sh/1ne6ph2mbihjmc9/AABUlee-YJlEhu2hExDsR5PQa?dl=0
 
 ![image](https://user-images.githubusercontent.com/44889226/142065871-a1121d8d-5b0c-4fe1-8cf0-7f3f9d509156.png)
@@ -178,19 +182,29 @@ On line 56, set resume to "" is starting from the beginning, otherwise set it to
 ![gen_custom](https://user-images.githubusercontent.com/44889226/142077579-2b0883a1-04c7-4798-802d-8ba76bb32671.png)
 
 Navigate to "batch-mask-main/software/ImageJ/plugins/JSON ROI/" and open "mica_import.py" in a text editor.
+
 On line 31, set the directory variable to the directory that the json files and source images are stored.
+
 ![import_mica](https://user-images.githubusercontent.com/44889226/142066631-195becca-3ec0-46df-8a25-b6311e552de6.png)
 
 Navigate to "batch-mask-main/software/ImageJ/" and run "ImageJ.exe"
+
 Navigate to "Plugins-> Multispectral Imaging -> Batch Generate Multispectral Images" and left click to run the batch  multispectral images generator.
+
 ![run_script](https://user-images.githubusercontent.com/44889226/142079536-58e8662b-2af6-4d01-a7cc-1ac90e57f2fc.png)
+
 Select the 5 percent color standard:
+
 ![5_percent](https://user-images.githubusercontent.com/44889226/142067813-16bdb2c7-e381-48b6-a554-bba03bbb93f1.png)
+
 Select the 95 percent color standard:
+
 ![95_percent](https://user-images.githubusercontent.com/44889226/142066651-9e6fc702-0425-4f7b-b091-89afe4915261.PNG)
+
 Repeat the color selection for the entire folder.
 
 Once the script is finished, the MSPEC and ROI files will be saved in the same directory as the json files and source images. These must stay in the same directory for other MicatoolBox features to work.
+
 ![image](https://user-images.githubusercontent.com/44889226/142065784-fc1aab3c-e211-469c-b76b-5247374a5138.png)
 
 You can follow this youtube tutorial to replicate the Pattern Processing we performed for the Batch-Mask paper: https://youtu.be/T62fr25b75M?t=3281
