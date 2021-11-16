@@ -162,7 +162,14 @@ Close roi manager and the current open image before moving on to the next image.
 If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins->JSON ROI->import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
  
 ## Batch Generating MSPEC files for MicaToolBox
+Place the json files generated from Batch-Mask in a folder with the source images (see example below).
 ![image](https://user-images.githubusercontent.com/44889226/142065871-a1121d8d-5b0c-4fe1-8cf0-7f3f9d509156.png)
+Navigate to batch-mask-main/software/ImageJ/plugins/Multispectral Imaging/ and open \_Generate_Multispectral_Image_Custom.ijm in a text editor.
+On line 55, set the directory variable to the directory that the json files and source images are stored.
+On line 56, set resume to "" is starting from the beginning, otherwise set it to the name of the image to start from (ex. "V8.jpg").
+
+Navigate to batch-mask-main/software/ImageJ/plugins/JSON ROI/ and open mica_import.py in a text editor.
+On line 31, set the directory variable to the directory that the json files and source images are stored.
 
 ![gen_custom](https://user-images.githubusercontent.com/44889226/142066628-60d77a5b-683e-4c6f-bd53-36a40e6c84d2.png)
 ![import_mica](https://user-images.githubusercontent.com/44889226/142066631-195becca-3ec0-46df-8a25-b6311e552de6.png)
