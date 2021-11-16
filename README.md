@@ -162,6 +162,8 @@ Close roi manager and the current open image before moving on to the next image.
 If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins->JSON ROI->import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
  
 ## Batch Generating MSPEC files for MicaToolBox
-![image](https://user-images.githubusercontent.com/44889226/139941399-5fc39432-b59a-40bf-a876-a8cd4c845ae7.png)
+![image](https://user-images.githubusercontent.com/44889226/142047060-030d565d-8d14-4d20-a8d9-29781c99e1aa.png)
 
-![image](https://user-images.githubusercontent.com/44889226/139941623-ff819ac8-324f-4188-831c-bbea5ff39b25.png)
+![image](https://user-images.githubusercontent.com/44889226/142051627-498d6f7b-d43a-418a-95f2-761718806432.png)
+
+![image](https://user-images.githubusercontent.com/44889226/142051688-9c8f5c16-aad6-4fba-b74e-bca66e90ecd6.png)
