@@ -162,8 +162,11 @@ Close roi manager and the current open image before moving on to the next image.
 If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins->JSON ROI->import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
  
 ## Batch Generating MSPEC files for MicaToolBox
-![image](https://user-images.githubusercontent.com/44889226/142047060-030d565d-8d14-4d20-a8d9-29781c99e1aa.png)
+![image](https://user-images.githubusercontent.com/44889226/142065871-a1121d8d-5b0c-4fe1-8cf0-7f3f9d509156.png)
 
-![142051627-498d6f7b-d43a-418a-95f2-761718806432](https://user-images.githubusercontent.com/44889226/142052066-c97fb93c-d647-407f-a42d-775d81d74f14.png)
+![gen_custom](https://user-images.githubusercontent.com/44889226/142066628-60d77a5b-683e-4c6f-bd53-36a40e6c84d2.png)
+![import_mica](https://user-images.githubusercontent.com/44889226/142066631-195becca-3ec0-46df-8a25-b6311e552de6.png)
+![5_percent](https://user-images.githubusercontent.com/44889226/142066644-b222b05d-806e-4a49-9d27-d4f62dbad13d.png)
+![95_percent](https://user-images.githubusercontent.com/44889226/142066651-9e6fc702-0425-4f7b-b091-89afe4915261.PNG)
+![image](https://user-images.githubusercontent.com/44889226/142065784-fc1aab3c-e211-469c-b76b-5247374a5138.png)
 
-![142051688-9c8f5c16-aad6-4fba-b74e-bca66e90ecd6](https://user-images.githubusercontent.com/44889226/142052076-f96379ab-7c93-423e-adab-0fa5844672de.png)
