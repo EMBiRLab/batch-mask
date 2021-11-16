@@ -164,6 +164,6 @@ If exported labels need to be edited for any reason, open the image, press 't' t
 ## Batch Generating MSPEC files for MicaToolBox
 ![image](https://user-images.githubusercontent.com/44889226/142047060-030d565d-8d14-4d20-a8d9-29781c99e1aa.png)
 
-![image](https://user-images.githubusercontent.com/44889226/142051627-498d6f7b-d43a-418a-95f2-761718806432.png)
+![142051627-498d6f7b-d43a-418a-95f2-761718806432](https://user-images.githubusercontent.com/44889226/142052066-c97fb93c-d647-407f-a42d-775d81d74f14.png)
 
-![image](https://user-images.githubusercontent.com/44889226/142051688-9c8f5c16-aad6-4fba-b74e-bca66e90ecd6.png)
+![142051688-9c8f5c16-aad6-4fba-b74e-bca66e90ecd6](https://user-images.githubusercontent.com/44889226/142052076-f96379ab-7c93-423e-adab-0fa5844672de.png)
