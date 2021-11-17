@@ -174,11 +174,11 @@ If exported labels need to be edited for any reason, open the image, press 't' t
 
 Place the json files containing the labels for the masks and scale bars in a folder with the source images (see example below).
 
-If you want to use the images from our dataset, you must use these the non-color corrected image: https://www.dropbox.com/sh/bt8blkl2sjndj22/AAAjVJJDyTZ6pm2F4AVsiVS7a?dl=0
+If you want to use the images from our dataset, you must use these the non-color corrected images located under "imagej/non_color_corrected_images" in the Snake data folder.
 
-The human labeld json files are located here: https://www.dropbox.com/sh/2a0gb2jsb0gmaiu/AABJtSIZCUf9suE3x8l8XaY5a?dl=0
+The human labeld json files are located under "imagej/training_masks" in the Snake data folder.
 
-The json files generated from Batch-Mask are located here:  https://www.dropbox.com/sh/1ne6ph2mbihjmc9/AABUlee-YJlEhu2hExDsR5PQa?dl=0
+The json files generated from Batch-Mask are located under "imagej/inference_masks" in the Snake data folder.
 
 ![image](https://user-images.githubusercontent.com/44889226/142065871-a1121d8d-5b0c-4fe1-8cf0-7f3f9d509156.png)
 
@@ -217,3 +217,8 @@ Once the script is finished, the MSPEC and ROI files will be saved in the same d
 You can follow this youtube tutorial to replicate the Pattern Processing we performed for the Batch-Mask paper: https://youtu.be/T62fr25b75M?t=3281
 
 TBA: how to add scale bar labels if a UV circle is not present in the dataset images.
+
+Original Mask RCNN Repository: https://github.com/matterport/Mask_RCNN
+Updated Mask RCNN for Tensorflow 2: https://github.com/akTwelve/Mask_RCNN
+MicatoolBox version 1 website: http://www.jolyon.co.uk/myresearch/image-analysis/image-analysis-tools/
+ImageJ version 1 website: https://imagej.nih.gov/ij/download.html
