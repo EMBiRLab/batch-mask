@@ -1,5 +1,9 @@
+# Introduction
+The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
+This tutorial will reference this folder as the Snake data folder.
+The Batch-Mask paper results were obtained from a sample of a larger photo dataset that can be found here: https://doi.org/10.7302/qta3-xs67
+
 # Batch Mask
- 
 ## Cloning the Master Repository
 Download the repository, extract it, and upload it to the “My Drive” folder on Google Drive.
 You can download the repository by clicking on "Code", then "Download ZIP":
@@ -43,7 +47,10 @@ Specify the training set folder in the config file contained in the log folder:
 
 ![training_dir](https://user-images.githubusercontent.com/44889226/138973171-e7d205cf-1c07-473c-a39a-96678ec6b459.png)
 
-The training dataset for Snake masking can be downloaded from this link: https://www.dropbox.com/sh/bsmaopj8rr9z014/AABowTCMNJGJ6BV6keQToQhaa?dl=0.
+The training dataset for Snake masking can be found in the Snake data folder.
+The first subset is the dorsal set, which is the upper side of a snake. This can be found under mask-rcnn/dorsal_set.
+The second subset is the ventral set, which is the under side (stomach) of a snake. This can be found under mask-rcnn/ventral_set.
+
 Download the ventral_set and dorsal_set folders and upload them to the training folder.
 Alternatively, you may follow the tutorial for creating and labeling your own dataset in ImageJ.
  
