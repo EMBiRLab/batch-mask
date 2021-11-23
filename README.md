@@ -1,5 +1,22 @@
 # Table of Contents
-
+1 Batch Mask
+* 1.1 Cloning the Master Repository
+* 1.2 Batch Mask Setup
+* 1.3 Copying File Paths in Google Colab
+* 1.4 Creating A Log Folder
+* 1.5 Upload Datasets
+* 1.6 Check Dataset
+* 1.7 Training the Neural Network
+** 1.7.1 Training Process
+** 1.7.2 Viewing Loss Values
+** 1.7.3 Evaluation Metrics
+* 1.8 Inference
+* 1.9 Creating A Metadata File
+2 ImageJ
+* 2.1 Setup
+* 2.2 Labeling Datasets
+* 2.3 Editing Labels
+* 2.4 Batch Generating Multispectral Images for MicaToolBox
 
 # Introduction
 The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
@@ -15,7 +32,7 @@ You can download the repository by clicking on "Code", then "Download ZIP":
 
 Navigate to the repository in Google Drive and find batch_mask.ipynb in batch-mask-main > code > scripts. Right-click the file, then click “Open with” and select Google Colaboratory (hereafter referred to as “Google Colab”. If Google Colab is not available as an option, you may have to select “Connect more apps” and add the Google Colab app.
  
-## 1.2 Setup
+## 1.2 Batch Mask Setup
 In order to use the Batch-Mask script, you must first run the setup code by pressing the play button on this cell block:
 
 ![Setup](https://user-images.githubusercontent.com/44889226/138912649-9f23deb7-c9d7-446e-b24a-9e4955f0c5da.png)
