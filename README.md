@@ -1,10 +1,13 @@
+# Table of Contents
+
+
 # Introduction
 The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
 This tutorial will reference this folder as the Snake data folder.
 The Batch-Mask paper results were obtained from a sample of a larger photo dataset that can be found here: https://doi.org/10.7302/qta3-xs67
 
-# Batch Mask
-## Cloning the Master Repository
+# 1 Batch Mask
+## 1.1 Cloning the Master Repository
 Download the repository, extract it, and upload it to the “My Drive” folder on Google Drive.
 You can download the repository by clicking on "Code", then "Download ZIP":
 
@@ -12,7 +15,7 @@ You can download the repository by clicking on "Code", then "Download ZIP":
 
 Navigate to the repository in Google Drive and find batch_mask.ipynb in batch-mask-main > code > scripts. Right-click the file, then click “Open with” and select Google Colaboratory (hereafter referred to as “Google Colab”. If Google Colab is not available as an option, you may have to select “Connect more apps” and add the Google Colab app.
  
-## Setup
+## 1.2 Setup
 In order to use the Batch-Mask script, you must first run the setup code by pressing the play button on this cell block:
 
 ![Setup](https://user-images.githubusercontent.com/44889226/138912649-9f23deb7-c9d7-446e-b24a-9e4955f0c5da.png)
@@ -25,17 +28,17 @@ Click this cell block to compile the code:
 
 The Google Colab script is now setup and ready to use!
  
-## Copying File Paths in Google Colab
+## 1.3 Copying File Paths in Google Colab
 You can copy a file or folder path in Google Colab by right clicking on the file/folder in the files view and selecting "copy path".
 
 ![copy_path](https://user-images.githubusercontent.com/44889226/138969645-22731987-f005-436a-bffa-02dde2ad9e7a.png)
 
-## Creating A Log Folder
+## 1.4 Creating A Log Folder
 The Google Colab script contains a code cell that will automatically generate a config file. Set the log_dir to be the directory that you want your log folder to be located, and set the dataset_dir to the dataset directory.
 
 ![gen_log](https://user-images.githubusercontent.com/44889226/138967351-bda00021-0c47-4f61-afc2-2a7f8a220eb3.png)
 
-## Upload Datasets
+## 1.5 Upload Datasets
 Create a "dataset" folder in Google Drive to contain training and inference datasets.
 Specify the dataset path in the config file contained in the log folder:
 
@@ -62,14 +65,14 @@ If you wish to run the neural network on the test set that we used, the download
  
 https://www.dropbox.com/sh/w2zhi3ti96w3r4l/AABsFmnjX38VDQqZ1C54nhVca?dl=0
  
-## Check Dataset
+## 1.6 Check Dataset
 You may check the dataset by running the check dataset cell block. Before running the cell block, set image_path to the path of the folder containing the dataset images, set label_path to the path of the folder containing the labels, set the start and end value to be the range of images to check (we suggest checking in batches of 50 because of limited ram resources), and set the mode to either "json" or "binary" depending on the type of label.
 
 ![check dataset](https://user-images.githubusercontent.com/44889226/138973479-477136fe-0524-4482-b645-c01e7ef0b2e8.png)
 
-## Training the Neural Network
+## 1.7 Training the Neural Network
  
-### Training Process
+### 1.7.1 Training Process
 After a log file has been created and the dataset are uploaded to Google Drive, you can begin the training process.
 First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file (https://www.dropbox.com/s/tt1u307y0p3nyhf/snake_epoch_16.h5?dl=0). However, you must upload the weight file to Google Drive and specify the path to the weight file in the config file:
 
@@ -83,7 +86,7 @@ Specify the config file path in the training cell block and run the cell block t
 
 If the training process stops because Google Colab times out, you may resume the training process by setting the training weights to the last weight file save, which can be found in the weights folder contained in your logs folder. Running the cell block will then resume the training process with those weights. The number of epochs does **not** have to be changed. The code will automatically detect how many epochs are remaining.
  
-### Viewing Loss Values
+### 1.7.2 Viewing Loss Values
 Once the training process is finished, you may view the loss values by specifying the weights output folder (which should be located under the weights folder in the log directory) and running this cell block:
 
 ![image](https://user-images.githubusercontent.com/44889226/138975279-85428283-8268-489e-83d5-3b770a3619f7.png)
@@ -92,7 +95,7 @@ After viewing the loss values, choose an epoch for inference and copy and paste 
 
 ![specify_test_weights](https://user-images.githubusercontent.com/44889226/138975784-36ea2927-4811-4e6a-a665-e51039b1f716.png)
 
-### Evaluation Metrics
+### 1.7.3 Evaluation Metrics
  
 You can obtain the average IOU or IOL metrics for the validation partition for each subset of the training set.
 Copy and paste the config file path into this cell block and run it:
@@ -101,7 +104,7 @@ Copy and paste the config file path into this cell block and run it:
 
 The evaluation metrics are run using the test weights specified in the config file.
  
-## Inference
+## 1.8 Inference
 To generate masks for an unlabeled set of images, specify the config file path, choose the output type, and run the inference cell block:
 
 ![image](https://user-images.githubusercontent.com/44889226/138976272-3de1b8ae-a1c8-4e45-96ce-618e85d17b9d.png)
@@ -118,15 +121,15 @@ The output folders are already specified in the config file and are located in t
  
 If you need to resume the inference because Google Colab timed out, you may set resume to true and it will pick up based on the last output file in the output folder.
  
-## Creating A Metadata File
+## 1.9 Creating A Metadata File
 
 ![image](https://user-images.githubusercontent.com/44889226/139880037-a2f35d5e-71af-4ab9-9e79-15e8f360e4c2.png)
 
 The metadata file is an optional ".csv" file that will name the mask rois based off the data to the right of column A. Column A corresponds to the name of the source image, and the roi will be named using the scheme "ColumnB_ColumnC_ColumnD_...". For example, the mask roi for the first image would be named "RAB_249_d_uv".
 
-# ImageJ
+# 2 ImageJ
  
-## Setup
+## 2.1 Setup
 Download the master repo and extract but don’t upload it to Google Drive.
 You can download the repo by clicking on "code", then "download zip":
 
@@ -134,7 +137,7 @@ You can download the repo by clicking on "code", then "download zip":
 
 Navigate to batch-mask/software/ImageJ and run ImageJ.exe
  
-## Labeling Datasets
+## 2.2 Labeling Datasets
  
 Open up the image to label inside ImageJ by either dragging it or going to File/Open
  
@@ -164,11 +167,11 @@ To export the labels to a json file, go to Plugins->JSON ROI->export and a save 
 
 Close roi manager and the current open image before moving on to the next image. Click discard to any save messages that pop up after closing any windows.
  
-## Editing Labels
+## 2.3 Editing Labels
  
 If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins->JSON ROI->import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
  
-## Batch Generating Multispectral Images for MicaToolBox
+## 2.4 Batch Generating Multispectral Images for MicaToolBox
 
 **Note, this portion of the tutorial can only be run on a Windows operating system**
 
@@ -216,7 +219,11 @@ Once the script is finished, the MSPEC and ROI files will be saved in the same d
 
 You can follow this youtube tutorial to replicate the Pattern Processing we performed for the Batch-Mask paper: https://youtu.be/T62fr25b75M?t=3281
 
-TBA: how to add scale bar labels if a UV circle is not present in the dataset images.
+## 2.5 Editing MSPEC File
+### 2.5.1 Changing the mask
+To be added
+### 2.5.2 Adding a scale bar
+To be added
 
 Original Mask RCNN Repository: https://github.com/matterport/Mask_RCNN
 Updated Mask RCNN for Tensorflow 2: https://github.com/akTwelve/Mask_RCNN
