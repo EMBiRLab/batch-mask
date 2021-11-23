@@ -7,9 +7,9 @@
 * 1.5 Upload Datasets
 * 1.6 Check Dataset
 * 1.7 Training the Neural Network
-* * 1.7.1 Training Process
-* * 1.7.2 Viewing Loss Values
-* * 1.7.3 Evaluation Metrics
+ * 1.7.1 Training Process
+ * 1.7.2 Viewing Loss Values
+ * 1.7.3 Evaluation Metrics
 * 1.8 Inference
 * 1.9 Creating A Metadata File
 2 ImageJ
