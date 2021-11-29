@@ -1,6 +1,6 @@
 # Table of Contents
 1 Batch Mask
-* 1.1 Cloning the Master Repository
+* 1.1 [Cloning the Master Repository](#1.1)
 * 1.2 Batch Mask Setup
 * 1.3 Copying File Paths in Google Colab
 * 1.4 Creating A Log Folder
@@ -28,6 +28,7 @@ This tutorial will reference this folder as the Snake data folder.
 The Batch-Mask paper results were obtained from a sample of a larger photo dataset that can be found here: https://doi.org/10.7302/qta3-xs67
 
 # 1 Batch Mask
+<a name="1.1"></a>
 ## 1.1 Cloning the Master Repository
 Download the repository, extract it, and upload it to the “My Drive” folder on Google Drive.
 You can download the repository by clicking on "Code", then "Download ZIP":
