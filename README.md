@@ -13,7 +13,8 @@
   * 1.7.2 [Viewing Loss Values](#1.7.2)
   * 1.7.3 [Evaluation Metrics](#1.7.3)
 * 1.8 [Inference](#1.8)
-* 1.9 [Creating A Metadata File](#1.9)
+* 1.9 [Creating A Metadata File](#1.9)\
+
 2 [ImageJ](#2)
 * 2.1 [Setup](#2.1)
 * 2.2 [Labeling Datasets](#2.2)
