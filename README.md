@@ -17,6 +17,10 @@
 * 2.2 Labeling Datasets
 * 2.3 Editing Labels
 * 2.4 Batch Generating Multispectral Images for MicaToolBox
+* 2.5 Editing Multispectral Image Files
+  * 2.5.1 Importing Multispectral Image Files
+  * 2.5.2 Changing The Mask
+  * 2.5.3 Adding A Scale Bar
 
 # Introduction
 The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
@@ -236,11 +240,22 @@ Once the script is finished, the MSPEC and ROI files will be saved in the same d
 
 You can follow this youtube tutorial to replicate the Pattern Processing we performed for the Batch-Mask paper: https://youtu.be/T62fr25b75M?t=3281
 
-## 2.5 Editing MSPEC File
-### 2.5.1 Changing the mask
-To be added
-### 2.5.2 Adding a scale bar
-To be added
+## 2.5 Editing Multispectral Image Files
+
+### 2.5.1 Importing Multispectral Image Files
+![Load multispectral](https://user-images.githubusercontent.com/44889226/143925929-555e8f08-92c1-4040-8ee6-bed514d940ee.png)
+
+![open mspec file](https://user-images.githubusercontent.com/44889226/143926213-eec83317-6406-4f9d-a793-47ef7db7b70a.png)
+
+![Image_output](https://user-images.githubusercontent.com/44889226/143925933-b3598132-ecd7-4d1f-90b5-71950c5b8c02.png)
+
+### 2.5.2 Changing The Mask
+![roi](https://user-images.githubusercontent.com/44889226/143926135-e5310c56-798a-40e2-bf06-82d52fa006c1.PNG)
+
+### 2.5.3 Adding A Scale Bar
+![Line tool](https://user-images.githubusercontent.com/44889226/143926305-9960adc1-639c-415c-af06-7c52fc0ae741.png)
+
+![outline_ruler](https://user-images.githubusercontent.com/44889226/143926366-924e09ba-12ea-44fd-b11c-266c21680ee7.png)
 
 Source Repositories and Softare
 * Original Mask RCNN Repository: https://github.com/matterport/Mask_RCNN
