@@ -1,5 +1,6 @@
 # Table of Contents
 [Introduction](#intro)
+
 1 [Batch Mask](#1)
 * 1.1 [Cloning the Master Repository](#1.1)
 * 1.2 [Batch Mask Setup](#1.2)
@@ -22,6 +23,7 @@
   * 2.5.1 [Importing Multispectral Image Files](#2.5.1)
   * 2.5.2 [Changing The Mask](#2.5.2)
   * 2.5.3 [Adding A Scale Bar](#2.5.3)
+
 [Source Repositories and Softare](#source)
 <a name="intro"></a>
 # Introduction
