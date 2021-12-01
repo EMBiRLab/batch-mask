@@ -29,7 +29,9 @@
 <a name="intro"></a>
 # Introduction
 The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
+
 This tutorial will reference this folder as the Snake data folder.
+
 The Batch-Mask paper results were obtained from a sample of a larger photo dataset that can be found here: https://doi.org/10.7302/qta3-xs67
 
 <a name="1"></a>
