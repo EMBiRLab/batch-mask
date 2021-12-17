@@ -25,7 +25,7 @@
   * 2.5.2 [Changing The Mask](#2.5.2)
   * 2.5.3 [Adding A Scale Bar](#2.5.3)
 
-[Source Repositories and Softare](#source)
+[Source Repositories and Software](#source)
 <a name="intro"></a>
 # Introduction
 The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
