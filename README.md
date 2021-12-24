@@ -270,14 +270,22 @@ You can follow this youtube tutorial to replicate the Pattern Processing we perf
 
 <a name="2.5.1"></a>
 ### 2.5.1 Importing Multispectral Image Files
+
+To open a multispectral image, go to Plugins->Multispectral Imaging->Load Multispectral Image
+
 ![Load multispectral](https://user-images.githubusercontent.com/44889226/143925929-555e8f08-92c1-4040-8ee6-bed514d940ee.png)
 
+Open the ".mspec" file to edit.
+
 ![open mspec file](https://user-images.githubusercontent.com/44889226/143926213-eec83317-6406-4f9d-a793-47ef7db7b70a.png)
+
+Leave the image output as the default "Aligned Normalised 32-bit" and click "OK".
 
 ![Image_output](https://user-images.githubusercontent.com/44889226/143925933-b3598132-ecd7-4d1f-90b5-71950c5b8c02.png)
 
 <a name="2.5.2"></a>
 ### 2.5.2 Changing The Mask
+
 ![roi](https://user-images.githubusercontent.com/44889226/143926135-e5310c56-798a-40e2-bf06-82d52fa006c1.PNG)
 
 <a name="2.5.3"></a>
@@ -287,7 +295,7 @@ You can follow this youtube tutorial to replicate the Pattern Processing we perf
 ![outline_ruler](https://user-images.githubusercontent.com/44889226/143926366-924e09ba-12ea-44fd-b11c-266c21680ee7.png)
 
 <a name="source"></a>
-Source Repositories and Softare
+Source Repositories and Software
 * Original Mask RCNN Repository: https://github.com/matterport/Mask_RCNN
 * Updated Mask RCNN for Tensorflow 2: https://github.com/akTwelve/Mask_RCNN
 * MicatoolBox version 1 website: http://www.jolyon.co.uk/myresearch/image-analysis/image-analysis-tools/
