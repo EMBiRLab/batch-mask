@@ -28,13 +28,11 @@
 [Source Repositories and Software](#source)
 <a name="intro"></a>
 # Introduction
-Batch-Mask utilizes a customized region-based convolutional neural network (R-CNN) model to generate masks of snakes in photographs. This neural network uses the training process to fine-tune mask weights from pre-trained weights provided with Mask R-CNN. On Google Colab, we set the GPU count to 1 and the number of images per GPU to 1. Our learning rate was 0.0001. All other parameters in the configuration file were left to their default values. The number of validation steps must be equal to the number of tiles in the validation set so that loss is calculated on the full validation set for every epoch. Mask-RCNN suggests using twice as many training steps as validation steps. The number of training and validation steps in an epoch does not affect model accuracy, but if training and validation loss values converge after a single epoch, decreasing the number of training steps will reveal the progression of loss values. Decreasing training steps should be accompanied by decreasing validation steps, such that a roughly 2:1 ratio is maintained. If the loss values take more than 12 hours to converge, the number of training steps can be increased. If both the training and validation loss plateau at non-zero values, model settings can be adjusted to increase accuracy. The training that resulted in the best masks used 450 training steps and 50 validation steps for each epoch. We trained for 20 epochs, each lasting 1.21 hours. The training and validation losses plateaued at 16 epochs, after which the validation losses began increasing (likely due to overfitting). The weight values at epochs were used for inference. Our training process duration was 24.2 hours.
+Batch-Mask utilizes a customized region-based convolutional neural network (R-CNN) model to generate masks of snakes in photographs. This neural network uses the training process to fine-tune mask weights from pre-trained weights provided with Mask R-CNN.
 
-The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
-
-This tutorial will reference this folder as the Snake data folder.
-
-The Batch-Mask paper results were obtained from a sample of a larger photo dataset that can be found here: https://doi.org/10.7302/qta3-xs67
+* The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
+* This tutorial will reference this folder as the Snake data folder.
+* The Batch-Mask paper results were obtained from a sample of a larger photo dataset that can be found here: https://doi.org/10.7302/qta3-xs67
 
 <a name="1"></a>
 # 1 Batch Mask
