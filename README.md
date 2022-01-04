@@ -285,14 +285,27 @@ Leave the image output as the default "Aligned Normalised 32-bit" and click "OK"
 
 <a name="2.5.2"></a>
 ### 2.5.2 Changing The Mask
-
+To edit the mask click on the mask ROI in the ROI Manager and moving arounds the nodes. You can then press 'Update' in the ROI Manager to apply the changes and '0' on the keyboard to save the MSPEC file.
 ![roi](https://user-images.githubusercontent.com/44889226/143926135-e5310c56-798a-40e2-bf06-82d52fa006c1.PNG)
 
 <a name="2.5.3"></a>
 ### 2.5.3 Adding A Scale Bar
+It is possible to add a scale bar to the mspec image (ex. the images didn't have a UV circle so you need to add a scale bar manually).
+
+Click on the "Straight" selector.
+
 ![Line tool](https://user-images.githubusercontent.com/44889226/143926305-9960adc1-639c-415c-af06-7c52fc0ae741.png)
 
+Outline a known measurement in the image (ex. a ruler).
+
 ![outline_ruler](https://user-images.githubusercontent.com/44889226/143926366-924e09ba-12ea-44fd-b11c-266c21680ee7.png)
+
+Press 'S' on the keyboard and enter the length of the scale bar. You may use any units but you must be consistant. We used millimeters for our units.
+
+![scale](https://user-images.githubusercontent.com/44889226/148101699-45d87e04-bde0-42f3-a78c-972b19d19e9b.png)
+
+Click 'Ok' and press '0' on the keyboard to save.
+If you wish to edit the scale bar, you need to delete the ROI from the roi manager and then create a new scale bar from scratch.
 
 <a name="source"></a>
 Source Repositories and Software
