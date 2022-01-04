@@ -308,7 +308,7 @@ Click 'Ok' and press '0' on the keyboard to save.
 If you wish to edit the scale bar, you need to delete the ROI from the roi manager and then create a new scale bar from scratch.
 
 <a name="source"></a>
-Source Repositories and Software
+# Source Repositories and Software
 * Original Mask RCNN Repository: https://github.com/matterport/Mask_RCNN
 * Updated Mask RCNN for Tensorflow 2: https://github.com/akTwelve/Mask_RCNN
 * MicatoolBox version 1 website: http://www.jolyon.co.uk/myresearch/image-analysis/image-analysis-tools/
