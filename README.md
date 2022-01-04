@@ -28,7 +28,7 @@
 [Source Repositories and Software](#source)
 <a name="intro"></a>
 # Introduction
-Batch-Mask utilizes a customized region-based convolutional neural network (R-CNN) model to generate masks of snakes in photographs. This neural network uses the training process to fine-tune mask weights from pre-trained weights provided with Mask R-CNN.
+Batch-Mask utilizes a customized region-based convolutional neural network (R-CNN) model to generate masks of snakes in photographs. This neural network uses the training process to fine-tune mask weights from pre-trained weights provided with Mask R-CNN. We have included all necessary code in this repository for utilizing Batch-Mask on Google Colabratory. This repository also cointains a version of the ImageJ software for windows with the nessecary plugins for dataset labeling and MicaToolbox Pattern analysis. This README file acts as a tutorial for either replicating the results from our dataset or obtaining results from a custom dataset.
 
 * The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
 * This tutorial will reference this folder as the Snake data folder.
