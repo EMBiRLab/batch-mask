@@ -292,7 +292,7 @@ To edit the mask click on the mask ROI in the ROI Manager and moving arounds the
 ### 2.5.3 Adding A Scale Bar
 It is possible to add a scale bar to the mspec image (ex. the images didn't have a UV circle so you need to add a scale bar manually).
 
-Click on the "Straight" selector.
+Click on the 'Straight' selector.
 
 ![Line tool](https://user-images.githubusercontent.com/44889226/143926305-9960adc1-639c-415c-af06-7c52fc0ae741.png)
 
