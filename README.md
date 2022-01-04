@@ -111,7 +111,7 @@ You may check the dataset by running the check dataset cell block. Before runnin
 <a name="1.7.1"></a>
 ### 1.7.1 Training Process
 After a log file has been created and the dataset are uploaded to Google Drive, you can begin the training process.
-First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file (https://www.dropbox.com/s/tt1u307y0p3nyhf/snake_epoch_16.h5?dl=0). However, you must upload the weight file to Google Drive and specify the path to the weight file in the config file:
+First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file located in 'mask-rcnn/weights'. However, you must upload the weight file to Google Drive and specify the path to the weight file in the config file:
 
 ![specify_weights](https://user-images.githubusercontent.com/44889226/138974367-0fc17a0a-f137-4fa2-8c6f-f8e61c240b82.png)
 
