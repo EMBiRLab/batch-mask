@@ -155,7 +155,7 @@ The output types are as follows: "json", "binary", and "splash".
 * "splash" will output a copy of the original image but with a blue background. This is a non-functional output but can be used to determine the qualitative performance of the neural network.
  
 The inference is run on the test set folder specified in the config file using the test weight file specified in the config file. If you did not train the neural network and you wish to use our weights you can download and upload them to Google Drive.
-You can find our weights here: https://www.dropbox.com/s/tt1u307y0p3nyhf/snake_epoch_16.h5?dl=0
+You can find our weights under 'batch-mask/weights' in the Snake data folder.
  
 The output folders are already specified in the config file and are located in the logs folder.
  
