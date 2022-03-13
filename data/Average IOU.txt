@@ -1,0 +1,17 @@
+Trained : Dorsal and Ventral
+  Epoch : 16
+  Test Dorsal : 0.8757741629274517
+  Test Ventral : 0.8079222913822405
+  Test Dorsal and Ventral : 0.8376074851832703
+
+Trained : Dorsal
+  Epoch : 11
+  Test Dorsal : 0.8812841389965601
+  Test Ventral : 0.7411414743902385
+  Test Dorsal and Ventral : 0.8024538901555043
+
+Trained : Ventral
+  Epoch : 8
+  Test Dorsal :  0.40848444373514886
+  Test Ventral : 0.7301124418523344
+  Test Dorsal and Ventral : 0.5894001926760657
