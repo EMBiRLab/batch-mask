@@ -1,0 +1,3 @@
+4374.7488667964935 seconds
+1.22 hours
+24.3 hours for 20 epochs
