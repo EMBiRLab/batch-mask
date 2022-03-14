@@ -127,15 +127,15 @@ After viewing the loss values, choose an epoch for inference and copy and paste 
 You can obtain the average IOU or IOL metrics for the validation partition for each subset of the training set.
 Run the evaluation metric code block:
 
-![metric path](https://user-images.githubusercontent.com/44889226/138975816-26ca2827-c474-486f-abab-ef71a69dffa6.png)
+![Eval](https://user-images.githubusercontent.com/44889226/158228167-3db44182-00a2-4ab7-a67a-225d41c7a393.png)
 
 The evaluation metrics are run using the test weights specified in the config file.
 
 <a name="1.8"></a>
 ## 1.8 Inference
-To generate masks for an unlabeled set of images, specify the config file path, choose the output type, and run the inference cell block:
+To generate masks for an unlabeled set of images choose the output type and run the inference cell block:
 
-![image](https://user-images.githubusercontent.com/44889226/138976272-3de1b8ae-a1c8-4e45-96ce-618e85d17b9d.png)
+![Detect](https://user-images.githubusercontent.com/44889226/158228672-ac328d84-15f3-4ff7-b8db-1bce59f6cac8.png)
 
 The output types are as follows: "json", "binary", and "splash".
 * "json" will output the mask in the same format as the json files used for training.
