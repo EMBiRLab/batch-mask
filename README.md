@@ -43,8 +43,8 @@ Navigate to the repository in Google Drive and find batch_mask.ipynb in batch-ma
 <a name="1.2"></a>
 ## 1.2 Batch Mask Setup
 In order to use the Batch-Mask script, you must first set the path to the config file.
-*See [Creating A Session Folder For A Custom Dataset](#1.4) to create a config file for a custom dataset.
-*See [Copying File Paths in Google Colab](#1.3) to set the path.
+* See [Creating A Session Folder For A Custom Dataset](#1.4) to create a config file for a custom dataset.
+* See [Copying File Paths in Google Colab](#1.3) to set the path.
 
 ![current](https://user-images.githubusercontent.com/44889226/158226886-4d129fd2-793e-4da9-a007-b2fba886815b.png)
 
