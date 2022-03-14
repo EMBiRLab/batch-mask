@@ -43,9 +43,10 @@ Navigate to the repository in Google Drive and find batch_mask.ipynb in batch-ma
 <a name="1.2"></a>
 ## 1.2 Batch Mask Setup
 In order to use the Batch-Mask script, you must first set the path to the config file.
-See [Creating A Session Folder For A Custom Dataset](#1.4) to create a config file for a custom dataset.
-See [Copying File Paths in Google Colab](#1.3) to set the path.
-![current](https://user-images.githubusercontent.com/44889226/158209697-0c00f711-3586-4cdb-823d-4ea5f046b269.png)
+*See [Creating A Session Folder For A Custom Dataset](#1.4) to create a config file for a custom dataset.
+*See [Copying File Paths in Google Colab](#1.3) to set the path.
+
+![current](https://user-images.githubusercontent.com/44889226/158226886-4d129fd2-793e-4da9-a007-b2fba886815b.png)
 
 Run the setup code by pressing the play button on this cell block:
 
@@ -98,7 +99,7 @@ You may check the dataset by running the check dataset cell block. Before runnin
 
 <a name="1.7.1"></a>
 ### 1.7.1 Training Process
-First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file located at 'data/Snake_epoch_16.h5':
+First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file located at 'data/snake_epoch_16.h5':
 
 ![specify_weights](https://user-images.githubusercontent.com/44889226/138974367-0fc17a0a-f137-4fa2-8c6f-f8e61c240b82.png)
 
@@ -106,7 +107,7 @@ You may also change the training parameters in the config file to yield better t
  
 Run the cell block to begin training. It took us ~24 hours to finish the training process.
 
-![Paste_config_file_path](https://user-images.githubusercontent.com/44889226/138974760-4f01a4f7-e64c-46f6-8da7-e86dc7837aa1.png)
+![current2](https://user-images.githubusercontent.com/44889226/158226955-0ddf61c4-81ee-4c9b-a4f8-71a3a0895c25.png)
 
 If the training process stops because Google Colab times out, you may resume the training process by setting the training weights to the last weight file save, which can be found in the weights folder contained in your logs folder. Running the cell block will then resume the training process with those weights. The number of epochs does **not** have to be changed. The code will automatically detect how many epochs are remaining.
 
@@ -206,7 +207,7 @@ If exported labels need to be edited for any reason, open the image, press 't' t
 
 Place the json files containing the labels for the masks and scale bars in a folder with the source images (see example below).
 
-If you want to use the images from our dataset, you must use these the non-color corrected images located under "data/datasets/train_val_images" in the Snake data folder.
+If you want to use the images from our dataset, you must use these the non-color corrected images located under "data/imagej/non_color_corrected_images" in the Snake data folder.
 
 The human labeled json files are located under "data/imagej/labeled_json" in the Snake data folder.
 
