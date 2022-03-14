@@ -2,11 +2,11 @@
 [Introduction](#intro)
 
 1 [Batch Mask](#1)
-* 1.1 [Cloning the Master Repository](#1.1)
+* 1.1 [Downloading The Code](#1.1)
 * 1.2 [Batch Mask Setup](#1.2)
 * 1.3 [Copying File Paths in Google Colab](#1.3)
-* 1.4 [Creating A Log Folder](#1.4)
-* 1.5 [Upload Datasets](#1.5)
+* 1.4 [Creating A Session Folder For A Custom Dataset](#1.4)
+* 1.5 [Upload Custom Datasets](#1.5)
 * 1.6 [Check Dataset](#1.6)
 * 1.7 [Training the Neural Network](#1.7)
   * 1.7.1 [Training Process](#1.7.1)
@@ -30,32 +30,33 @@
 # Introduction
 Batch-Mask utilizes a customized region-based convolutional neural network (R-CNN) model to generate masks of snakes in photographs. This neural network uses the training process to fine-tune mask weights from pre-trained weights provided with Mask R-CNN. We have included all necessary code in this repository for utilizing Batch-Mask on Google Colabratory. This repository also cointains a version of the ImageJ software for windows with the nessecary plugins for dataset labeling and MicaToolbox Pattern analysis. This README file acts as a tutorial for either replicating the results from our dataset or obtaining results from a custom dataset.
 
-* The datasets and weight files that were used for the Batch-Mask paper can be downloaded from here: https://doi.org/10.7302/3xwv-7n71
-* This tutorial will reference this folder as the Snake data folder.
 * The Batch-Mask paper results were obtained from a sample of a larger photo dataset that can be found here: https://doi.org/10.7302/qta3-xs67
 
 <a name="1"></a>
 # 1 Batch Mask
 <a name="1.1"></a>
-## 1.1 Cloning the Master Repository
-Download the repository, extract it, and upload it to the “My Drive” folder on Google Drive.
-You can download the repository by clicking on "Code", then "Download ZIP":
-
-![DownloadCode](https://user-images.githubusercontent.com/44889226/138960683-d2807e50-aa58-473e-9da0-fbf5c1b9ee13.png)
+## 1.1 Downloading The Code
+Download the code from https://doi.org/10.7302/3xwv-7n71, extract it, and upload it to the “My Drive” folder on Google Drive.
 
 Navigate to the repository in Google Drive and find batch_mask.ipynb in batch-mask-main > code > scripts. Right-click the file, then click “Open with” and select Google Colaboratory (hereafter referred to as “Google Colab”. If Google Colab is not available as an option, you may have to select “Connect more apps” and add the Google Colab app.
 
 <a name="1.2"></a>
 ## 1.2 Batch Mask Setup
-In order to use the Batch-Mask script, you must first run the setup code by pressing the play button on this cell block:
+In order to use the Batch-Mask script, you must first set the path to the config file.
+* See [Creating A Session Folder For A Custom Dataset](#1.4) to create a config file for a custom dataset.
+* See [Copying File Paths in Google Colab](#1.3) to set the path.
 
-![Setup](https://user-images.githubusercontent.com/44889226/138912649-9f23deb7-c9d7-446e-b24a-9e4955f0c5da.png)
+![SetConfig](https://user-images.githubusercontent.com/44889226/158226886-4d129fd2-793e-4da9-a007-b2fba886815b.png)
 
-You will be asked for an authentication code. Click on the link in the terminal, follow the prompts, and then copy and paste your authentication code into the box in the terminal to mount your Google Drive to the Google Colab script.
+Run the setup code by pressing the play button on this cell block:
+
+![Setup](https://user-images.githubusercontent.com/44889226/158227706-3ad02a3d-464e-4ccf-be87-1c807c8290cb.png)
+
+You will be asked to link your google drive to colab. Give colab permission to link colab to your google drive and follow the on screen prompt to sign into your google account .
  
 Click this cell block to compile the code:
 
-![Compile](https://user-images.githubusercontent.com/44889226/138913444-42f51609-d989-4c4e-964c-26809dca9cb9.png)
+![compile_code](https://user-images.githubusercontent.com/44889226/158229579-ba636e82-0df6-412d-b944-3b4851cab1cb.png)
 
 The Google Colab script is now setup and ready to use!
 
@@ -66,38 +67,26 @@ You can copy a file or folder path in Google Colab by right clicking on the file
 ![copy_path](https://user-images.githubusercontent.com/44889226/138969645-22731987-f005-436a-bffa-02dde2ad9e7a.png)
 
 <a name="1.4"></a>
-## 1.4 Creating A Log Folder
-The Google Colab script contains a code cell that will automatically generate a config file. Set the log_dir to be the directory that you want your log folder to be located, and set the dataset_dir to the dataset directory.
+## 1.4 Creating A Session Folder For A Custom Dataset
+The Google Colab script contains a code cell that will automatically generate a config file. Set the log_dir to be the directory that you want your session folder to be located, and set the dataset_dir to the custom dataset directory. See [Upload Custom Datasets](#1.5) to upload a custom dataset to google drive.
 
-![gen_log](https://user-images.githubusercontent.com/44889226/138967351-bda00021-0c47-4f61-afc2-2a7f8a220eb3.png)
+![Cutom Dataset](https://user-images.githubusercontent.com/44889226/158229624-0852053f-3a6a-40d2-9dcb-6d78147ebf02.png)
 
 <a name="1.5"></a>
-## 1.5 Upload Datasets
-Create a "dataset" folder in Google Drive to contain training and inference datasets.
-Specify the dataset path in the config file contained in the log folder:
+## 1.5 Upload Custom Datasets
+Create a folder in Google Drive to contain the custom training and inference datasets.
 
 ![dataset_dir](https://user-images.githubusercontent.com/44889226/138972995-0498a16f-c4e0-46b7-b883-8895da3ca341.png)
 
 If you plan to train the neural network, make a folder in the dataset folder to contain the training dataset. From there, create subfolders for each subset of the dataset. We divided the snake dataset into two subsets, dorsal and ventral. This is useful for comparing results from training on specific subsets. If you only need one subset for your dataset, then make a single folder. Note, the subset folders **cannot** be named "all".
  
-Specify the training set folder in the config file contained in the log folder:
+Specify the training set folder in the config file:
 
 ![training_dir](https://user-images.githubusercontent.com/44889226/138973171-e7d205cf-1c07-473c-a39a-96678ec6b459.png)
 
-The training dataset for Snake masking can be found in the Snake data folder.
-The first subset is the dorsal set, which is the upper side of a snake. This can be found under mask-rcnn/dorsal_set.
-The second subset is the ventral set, which is the under side (stomach) of a snake. This can be found under mask-rcnn/ventral_set.
-
-Download the ventral_set and dorsal_set folders and upload them to the training folder.
-Alternatively, you may follow the tutorial for creating and labeling your own dataset in ImageJ.
- 
 If you want to use the neural network to detect the mask on a folder of images, simply upload the folder to the dataset folder and specify the folder in the config file contained in the log folder:
 
 ![specify_test_set](https://user-images.githubusercontent.com/44889226/138973368-ab73eb5f-d9fa-4bbf-a3ad-c702aa6878d2.png)
-
-If you wish to run the neural network on the test set that we used, the download is located here:
- 
-https://www.dropbox.com/sh/w2zhi3ti96w3r4l/AABsFmnjX38VDQqZ1C54nhVca?dl=0
 
 <a name="1.6"></a>
 ## 1.6 Check Dataset
@@ -110,16 +99,15 @@ You may check the dataset by running the check dataset cell block. Before runnin
 
 <a name="1.7.1"></a>
 ### 1.7.1 Training Process
-After a log file has been created and the dataset are uploaded to Google Drive, you can begin the training process.
-First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file located in 'mask-rcnn/weights'. However, you must upload the weight file to Google Drive and specify the path to the weight file in the config file:
+First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file located at 'data/snake_epoch_16.h5':
 
 ![specify_weights](https://user-images.githubusercontent.com/44889226/138974367-0fc17a0a-f137-4fa2-8c6f-f8e61c240b82.png)
 
-You may also change the training parameters in the config file to yield better training results.
+You may also change the training parameters in the config file to yield better training results for a custom dataset. See the paper for information on how to tweak the parameters.
  
-Specify the config file path in the training cell block and run the cell block to begin training. It took us ~24 hours to finish the training process.
+Run the cell block to begin training. It took us ~24 hours to finish the training process.
 
-![Paste_config_file_path](https://user-images.githubusercontent.com/44889226/138974760-4f01a4f7-e64c-46f6-8da7-e86dc7837aa1.png)
+![current2](https://user-images.githubusercontent.com/44889226/158226955-0ddf61c4-81ee-4c9b-a4f8-71a3a0895c25.png)
 
 If the training process stops because Google Colab times out, you may resume the training process by setting the training weights to the last weight file save, which can be found in the weights folder contained in your logs folder. Running the cell block will then resume the training process with those weights. The number of epochs does **not** have to be changed. The code will automatically detect how many epochs are remaining.
 
@@ -137,27 +125,26 @@ After viewing the loss values, choose an epoch for inference and copy and paste 
 ### 1.7.3 Evaluation Metrics
  
 You can obtain the average IOU or IOL metrics for the validation partition for each subset of the training set.
-Copy and paste the config file path into this cell block and run it:
+Run the evaluation metric code block:
 
-![metric path](https://user-images.githubusercontent.com/44889226/138975816-26ca2827-c474-486f-abab-ef71a69dffa6.png)
+![Eval](https://user-images.githubusercontent.com/44889226/158228167-3db44182-00a2-4ab7-a67a-225d41c7a393.png)
 
 The evaluation metrics are run using the test weights specified in the config file.
 
 <a name="1.8"></a>
 ## 1.8 Inference
-To generate masks for an unlabeled set of images, specify the config file path, choose the output type, and run the inference cell block:
+To generate masks for an unlabeled set of images choose the output type and run the inference cell block:
 
-![image](https://user-images.githubusercontent.com/44889226/138976272-3de1b8ae-a1c8-4e45-96ce-618e85d17b9d.png)
+![Detect](https://user-images.githubusercontent.com/44889226/158228672-ac328d84-15f3-4ff7-b8db-1bce59f6cac8.png)
 
 The output types are as follows: "json", "binary", and "splash".
 * "json" will output the mask in the same format as the json files used for training.
 * "binary" will output the mask as a csv file with each cell containing a zero or a one. This is the most universal style of output.
 * "splash" will output a copy of the original image but with a blue background. This is a non-functional output but can be used to determine the qualitative performance of the neural network.
  
-The inference is run on the test set folder specified in the config file using the test weight file specified in the config file. If you did not train the neural network and you wish to use our weights you can download and upload them to Google Drive.
-You can find our weights under 'batch-mask/weights' in the Snake data folder.
+The inference is run on the test set folder specified in the config file using the test weight file specified in the config file. If you did not train the neural network and you can use the config file under 'data/snake-session' to test our weights.
  
-The output folders are already specified in the config file and are located in the logs folder.
+The output folders are already specified in the config file and are located in the session folder.
  
 If you need to resume the inference because Google Colab timed out, you may set resume to true and it will pick up based on the last output file in the output folder.
 
@@ -173,10 +160,7 @@ The metadata file is an optional ".csv" file that will name the mask rois based 
 
 <a name="2.1"></a>
 ## 2.1 Setup
-Download the master repo and extract but don’t upload it to Google Drive.
-You can download the repo by clicking on "code", then "download zip":
-
-![DownloadCode](https://user-images.githubusercontent.com/44889226/138960683-d2807e50-aa58-473e-9da0-fbf5c1b9ee13.png)
+Download the software from https://doi.org/10.7302/3xwv-7n71 and extract it.
 
 Navigate to batch-mask/software/ImageJ and run ImageJ.exe
 
@@ -223,11 +207,11 @@ If exported labels need to be edited for any reason, open the image, press 't' t
 
 Place the json files containing the labels for the masks and scale bars in a folder with the source images (see example below).
 
-If you want to use the images from our dataset, you must use these the non-color corrected images located under "imagej/non_color_corrected_images" in the Snake data folder.
+If you want to use the images from our dataset, you must use these the non-color corrected images located under "data/imagej/non_color_corrected_images" in the Snake data folder.
 
-The human labeld json files are located under "imagej/training_masks" in the Snake data folder.
+The human labeled json files are located under "data/imagej/labeled_json" in the Snake data folder.
 
-The json files generated from Batch-Mask are located under "imagej/inference_masks" in the Snake data folder.
+The json files generated from Batch-Mask are located under "data/imagej/inference_json" in the Snake data folder.
 
 ![image](https://user-images.githubusercontent.com/44889226/142065871-a1121d8d-5b0c-4fe1-8cf0-7f3f9d509156.png)
 
