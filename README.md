@@ -46,11 +46,11 @@ In order to use the Batch-Mask script, you must first set the path to the config
 * See [Creating A Session Folder For A Custom Dataset](#1.4) to create a config file for a custom dataset.
 * See [Copying File Paths in Google Colab](#1.3) to set the path.
 
-![current](https://user-images.githubusercontent.com/44889226/158226886-4d129fd2-793e-4da9-a007-b2fba886815b.png)
+![SetConfig](https://user-images.githubusercontent.com/44889226/158226886-4d129fd2-793e-4da9-a007-b2fba886815b.png)
 
 Run the setup code by pressing the play button on this cell block:
 
-![Setup](https://user-images.githubusercontent.com/44889226/138912649-9f23deb7-c9d7-446e-b24a-9e4955f0c5da.png)
+![Setup](https://user-images.githubusercontent.com/44889226/158227706-3ad02a3d-464e-4ccf-be87-1c807c8290cb.png)
 
 You will be asked to link your google drive to colab. Give colab permission to link colab to your google drive and follow the on screen prompt to sign into your google account .
  
