@@ -56,7 +56,7 @@ You will be asked to link your google drive to colab. Give colab permission to l
  
 Click this cell block to compile the code:
 
-![Compile](https://user-images.githubusercontent.com/44889226/138913444-42f51609-d989-4c4e-964c-26809dca9cb9.png)
+![compile_code](https://user-images.githubusercontent.com/44889226/158229579-ba636e82-0df6-412d-b944-3b4851cab1cb.png)
 
 The Google Colab script is now setup and ready to use!
 
@@ -70,7 +70,7 @@ You can copy a file or folder path in Google Colab by right clicking on the file
 ## 1.4 Creating A Session Folder For A Custom Dataset
 The Google Colab script contains a code cell that will automatically generate a config file. Set the log_dir to be the directory that you want your session folder to be located, and set the dataset_dir to the custom dataset directory. See [Upload Custom Datasets](#1.5) to upload a custom dataset to google drive.
 
-![gen_log](https://user-images.githubusercontent.com/44889226/138967351-bda00021-0c47-4f61-afc2-2a7f8a220eb3.png)
+![Cutom Dataset](https://user-images.githubusercontent.com/44889226/158229624-0852053f-3a6a-40d2-9dcb-6d78147ebf02.png)
 
 <a name="1.5"></a>
 ## 1.5 Upload Custom Datasets
