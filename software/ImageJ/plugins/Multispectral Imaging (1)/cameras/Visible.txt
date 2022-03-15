@@ -1,2 +1,0 @@
-Photo	R G B
-v	1	2	3

@@ -1,3 +1,0 @@
-Pollack Weber Fractions at 0.05 (cone ratios from Schand et al 1988, lw:sw 339:168)
-sw	0.0710256493
-lw	0.05

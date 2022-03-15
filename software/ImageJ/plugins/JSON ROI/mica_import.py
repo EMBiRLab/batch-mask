@@ -28,9 +28,9 @@ def get_roi(data):
 rm = RoiManager.getInstance()
 
 if rm:
-    directory = "C:/Users/timre/Desktop/inference_set/"
+    directory = "C:/Users/timre/Desktop/tutorial set/"
     imp = IJ.getImage()
-    name = directory + imp.title + '.json'
+    name = directory + imp.title[:-4] + '.json'
     file = open(name,'r')
     read = file.read()
     data = json.loads(read)
