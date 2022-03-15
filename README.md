@@ -209,9 +209,9 @@ Place the json files containing the labels for the masks and scale bars in a fol
 
 If you want to use the images from our dataset, you must use these the non-color corrected images located under "data/imagej/non_color_corrected_images" in the Snake data folder.
 
-The human labeled json files are located under "data/imagej/labeled_json" in the Snake data folder.
+The human labeled json files are located under "data/imagej/labeled_masks" in the Snake data folder.
 
-The json files generated from Batch-Mask are located under "data/imagej/inference_json" in the Snake data folder.
+The json files generated from Batch-Mask are located under "data/imagej/inference_masks" in the Snake data folder.
 
 ![image](https://user-images.githubusercontent.com/44889226/142065871-a1121d8d-5b0c-4fe1-8cf0-7f3f9d509156.png)
 
