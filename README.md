@@ -48,12 +48,16 @@ In order to use the Batch-Mask script, you must first set the path to the config
 
 ![SetConfig](https://user-images.githubusercontent.com/44889226/158226886-4d129fd2-793e-4da9-a007-b2fba886815b.png)
 
+Run this cell block to link your google drive to colab:
+
+![link gdrive](https://user-images.githubusercontent.com/44889226/165789775-33947d61-5076-4897-a414-224d34305c34.jpg)
+
+Give colab permission to link colab to your google drive and follow the on screen prompt to sign into your google account.
+
 Run the setup code by pressing the play button on this cell block:
 
-![Setup](https://user-images.githubusercontent.com/44889226/158227706-3ad02a3d-464e-4ccf-be87-1c807c8290cb.png)
+![install_script](https://user-images.githubusercontent.com/44889226/165789878-9351f454-9a46-404c-b81e-59c25dcf18d2.jpg)
 
-You will be asked to link your google drive to colab. Give colab permission to link colab to your google drive and follow the on screen prompt to sign into your google account .
- 
 Click this cell block to compile the code:
 
 ![compile_code](https://user-images.githubusercontent.com/44889226/158229579-ba636e82-0df6-412d-b944-3b4851cab1cb.png)
