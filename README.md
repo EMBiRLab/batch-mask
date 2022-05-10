@@ -145,6 +145,9 @@ The output types are as follows: "json", "binary", and "splash".
 * "json" will output the mask in the same format as the json files used for training.
 * "binary" will output the mask as a csv file with each cell containing a zero or a one. This is the most universal style of output.
 * "splash" will output a copy of the original image but with a blue background. This is a non-functional output but can be used to determine the qualitative performance of the neural network.
+
+To use multiple output types, you can seperate them using the '&' character.
+For example, to create outputs for both "binary" and "splash", you would set the output type to be "binary&splash".
  
 The inference is run on the test set folder specified in the config file using the test weight file specified in the config file. If you did not train the neural network and you can use the config file under 'data/snake-session' to test our weights.
  
