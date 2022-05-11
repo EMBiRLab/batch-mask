@@ -155,6 +155,11 @@ The output folders are already specified in the config file and are located in t
  
 If you need to resume the inference because Google Colab timed out, you may set resume to true and it will pick up based on the last output file in the output folder.
 
+### Scale Bar Culculator
+There is an optional additional step that can calculate the scale bar for each image by finding the uv circle within the image. This step requires a uv circle to be present in the images and can only run if the output type is "json". To enable this step, set "CALCULATE_SCALE_BAR" to "True"in the config file. You should adjust the "GREY_STD_RADIUS" to match the radius (in mm) of the uv circle in the images. Ours was 16.6085 mm. You may need to adjust the values under the "[SCALE BAR]" section. These are the minimum radius (in pixels) that the algorithm uses to find the circle. 650 pixels worked for all but one of the images in the snake datasets. To adjust the values for outlier images (ex, DSC_1705.jpg in the train_val_set), set the key to the name of the image minus the extension (ex, "DSC_1705") and set the value in units of pixels (we had to use 600 for "DSC_1705").
+
+<img width="576" alt="scale_bar_cal" src="https://user-images.githubusercontent.com/44889226/167962082-2584c854-5a1c-415f-bbbd-c6da31919310.png">
+
 <a name="1.9"></a>
 ## 1.9 Creating A Metadata File
 
