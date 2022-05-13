@@ -1,312 +1,224 @@
 # Table of Contents
-[Introduction](#intro)
+[Introduction] (#intro)
 
-1 [Batch Mask](#1)
-* 1.1 [Downloading The Code](#1.1)
-* 1.2 [Batch Mask Setup](#1.2)
-* 1.3 [Copying File Paths in Google Colab](#1.3)
-* 1.4 [Creating A Session Folder For A Custom Dataset](#1.4)
-* 1.5 [Upload Custom Datasets](#1.5)
-* 1.6 [Check Dataset](#1.6)
-* 1.7 [Training the Neural Network](#1.7)
-  * 1.7.1 [Training Process](#1.7.1)
-  * 1.7.2 [Viewing Loss Values](#1.7.2)
-  * 1.7.3 [Evaluation Metrics](#1.7.3)
-* 1.8 [Inference](#1.8)
-* 1.9 [Creating A Metadata File](#1.9)
+1 [Implementing Batch-Mask on a sample dataset to reproduce the results from our paper](#1)
+* 1.1 [Downloading the code](#1.1)
+* 1.2 [Batch Mask setup](#1.2)
+* 1.3 [Implementation on a sample dataset](#1.3)
 
-2 [ImageJ](#2)
-* 2.1 [Setup](#2.1)
-* 2.2 [Labeling Datasets](#2.2)
-* 2.3 [Editing Labels](#2.3)
-* 2.4 [Batch Generating Multispectral Images for MicaToolBox](#2.4)
-* 2.5 [Editing Multispectral Image Files](#2.5)
-  * 2.5.1 [Importing Multispectral Image Files](#2.5.1)
-  * 2.5.2 [Changing The Mask](#2.5.2)
-  * 2.5.3 [Adding A Scale Bar](#2.5.3)
+2 [Implementing Batch-Mask on a custom set of images using our pre-trained weights](#2)
+* 2.1 [Downloading the code and adding a custom dataset](#2.1)
+* 2.2 [Batch-Mask setup and editing the config file setup](#2.2)
+* 2.3 [Implementation on custom dataset](#2.3)
+
+3 [Training and implementing Batch-Mask on a custom set of images using custom weights](#3)
+* 3.1 [Creating training masks using ImageJ](#3.1)
+  * 3.1.1 ImageJ setup](#3.1.1)
+  * 3.1.2 Labeling regions of interest (ROIs) in ImageJ](#3.1.2)
+  * 3.1.3 Editing ROI labels in ImageJ](#3.1.3)
+* 3.2 Downloading the code, creating a session folder, and adding custom training and inference datasets](#3.2)
+* 3.3 Checking your training dataset](#3.3)
+* 3.4 Training the neural network](#3.4)
+  * 3.4.1 Beginning the training process](#3.4.1)
+  * 3.4.2 Viewing loss values](#3.4.2)
+  * 3.4.3 Evaluation metrics](#3.4.3)
+* 3.5 Implementing Batch-Mask using custom generated weights](#3.5)
+
+4 Preparing Batch-Mask outputs for downstream analysis in micaToolbox](#4)
+* 4.1 Batch generating multispectral (.mspec) images for micaToolbox](#4.1)
+* 4.2 Editing multispectral image files](#4.2)
 
 [Source Repositories and Software](#source)
+
 <a name="intro"></a>
 # Introduction
-Batch-Mask utilizes a customized region-based convolutional neural network (R-CNN) model to generate masks of snakes in photographs. This neural network uses the training process to fine-tune mask weights from pre-trained weights provided with Mask R-CNN. We have included all necessary code in this repository for utilizing Batch-Mask on Google Colabratory. This repository also cointains a version of the ImageJ software for windows with the nessecary plugins for dataset labeling and MicaToolbox Pattern analysis. This README file acts as a tutorial for either replicating the results from our dataset or obtaining results from a custom dataset.
+Hello, and thank you for using Batch-Mask! This workflow utilizes a customized region-based convolutional neural network (R-CNN) model to generate masks of snakes in photographs (see our accompanying paper [https://doi.org/10.1093/icb/icac036]) but can be applied to various organisms with limbless or nonstandard body forms. The neural network uses the training process to fine-tune mask weights from pre-trained weights provided with Mask R-CNN. We have included all necessary code in this repository for utilizing Batch-Mask on Google Colaboratory, as well as a version of the ImageJ software for Windows with the necessary plugins for dataset labeling and MicaToolbox Pattern analysis. 
 
-* The Batch-Mask paper results were obtained from a sample of a larger photo dataset that can be found here: https://doi.org/10.7302/qta3-xs67
+This README file includes a tutorial and information for 1) implementing Batch-Mask on a sample dataset of snake images to reproduce the results of our paper, 2) implementing Batch-Mask on a custom set of images using our pre-trained weights, 3) training the neural network on a custom set of images and using the resulting weights to implement Batch-Mask on a custom set of images, and 4) preparing Batch-Mask outputs for downstream analyses in MicaToolbox.
 
 <a name="1"></a>
-# 1 Batch Mask
-<a name="1.1"></a>
-## 1.1 Downloading The Code
-Download the code from https://doi.org/10.7302/3xwv-7n71, extract it, and upload it to the “My Drive” folder on Google Drive.
+# 1 Implementing Batch-Mask on a sample dataset to reproduce the results from our paper [https://doi.org/10.1093/icb/icac036]
 
-Navigate to the repository in Google Drive and find batch_mask.ipynb in batch-mask-main > code > scripts. Right-click the file, then click “Open with” and select Google Colaboratory (hereafter referred to as “Google Colab”. If Google Colab is not available as an option, you may have to select “Connect more apps” and add the Google Colab app.
+<a name="1.1"></a>
+## 1.1 Downloading the code
+Download the zipped repository (batch-mask-v1.0.0.zip or newer version) from https://doi.org/10.7302/3xwv-7n71, extract/unzip if necessary, and upload the folder to your “My Drive” folder on Google Drive.
+
+Navigate to the repository in Google Drive and find “batch_mask.ipynb” in “batch-mask-v1.0.0/code/scripts”. Right-click the ipynb file, then click “Open with” and select Google Colaboratory (hereafter referred to as “Google Colab”). If Google Colab is not available as an option, you may have to select “Connect more apps” and add the Google Colab app. The notebook should open in a new window.
 
 <a name="1.2"></a>
-## 1.2 Batch Mask Setup
-In order to use the Batch-Mask script, you must first set the path to the config file.
-* See [Creating A Session Folder For A Custom Dataset](#1.4) to create a config file for a custom dataset.
-* See [Copying File Paths in Google Colab](#1.3) to set the path.
+## 1.2 Batch-Mask setup
+In order to use the Batch-Mask script, you must first link your Google Drive folder to Google Colab. Press play on the first cell block. You will be asked to give Google Colab permission to access Google Drive. Follow the on-screen prompts to sign in to your Google account. 
 
-![SetConfig](https://user-images.githubusercontent.com/44889226/158226886-4d129fd2-793e-4da9-a007-b2fba886815b.png)
+Next, check the second cell block and ensure that the file path to your config file is correct. You can check file paths and modify files within the Google Colab notebook by clicking the folder icon on the left-hand side of the screen. In the side panel that pops up, navigate to the config file. If you are using the provided config.ini file, it should be located in “drive/MyDrive/batch-mask-v1.0.0/data/snake-session”. You can edit this file by double clicking it (opens in a new panel on the right-hand side of the screen) or copy its file path by right clicking it and selecting “Copy path”. This config file should be edited when using custom datasets or weights, but to reproduce the results of our paper, it does not need to be edited. Click the play button in this cell block to install the dependencies and run the setup script.
 
-Run this cell block to link your google drive to colab:
-
-![link gdrive](https://user-images.githubusercontent.com/44889226/165789775-33947d61-5076-4897-a414-224d34305c34.jpg)
-
-Give colab permission to link colab to your google drive and follow the on screen prompt to sign into your google account.
-
-Run the setup code by pressing the play button on this cell block:
-
-![install_script](https://user-images.githubusercontent.com/44889226/165789878-9351f454-9a46-404c-b81e-59c25dcf18d2.jpg)
-
-Click this cell block to compile the code:
-
-![compile_code](https://user-images.githubusercontent.com/44889226/158229579-ba636e82-0df6-412d-b944-3b4851cab1cb.png)
-
-The Google Colab script is now setup and ready to use!
+After this cell block has completed, scroll down to the cell block under the Code heading and click the play button to compile the code. Once this has finished running, the Batch-Mask script is ready to be implemented. 
 
 <a name="1.3"></a>
-## 1.3 Copying File Paths in Google Colab
-You can copy a file or folder path in Google Colab by right clicking on the file/folder in the files view and selecting "copy path".
+## 1.3 Implementation on a sample dataset
 
-![copy_path](https://user-images.githubusercontent.com/44889226/138969645-22731987-f005-436a-bffa-02dde2ad9e7a.png)
+Scroll down to the cell block under the Detect heading. Pressing play will generate masks for the unlabeled set of test images provided in the download; these are the same 50 images that were used in our paper. Batch-Mask can generate three output types, as follows:
 
-<a name="1.4"></a>
-## 1.4 Creating A Session Folder For A Custom Dataset
-The Google Colab script contains a code cell that will automatically generate a config file. Set the log_dir to be the directory that you want your session folder to be located, and set the dataset_dir to the custom dataset directory. See [Upload Custom Datasets](#1.5) to upload a custom dataset to google drive.
+* "json" will output the mask in the same format as the .json files used for training.
+* "binary" will output the mask as a .csv file with each cell containing a zero or a one. This is the most universal style of output.
+* "splash" will output a .jpg copy of the original image but with a blue overlay showing which portions of the image are not included in the mask. This is a non-functional output but can be used to determine the qualitative performance of the neural network.
 
-![Cutom Dataset](https://user-images.githubusercontent.com/44889226/158229624-0852053f-3a6a-40d2-9dcb-6d78147ebf02.png)
+Type the desired output type in the cell block before pressing play. To use multiple output types, you can separate them using the '&' character. For example, to create outputs for both "binary" and "splash", you would set the output type to be "binary&splash". Output folders are specified in the config file and are located in the snake-session folder.
 
-<a name="1.5"></a>
-## 1.5 Upload Custom Datasets
-Create a folder in Google Drive to contain the custom training and inference datasets.
-
-![dataset_dir](https://user-images.githubusercontent.com/44889226/138972995-0498a16f-c4e0-46b7-b883-8895da3ca341.png)
-
-If you plan to train the neural network, make a folder in the dataset folder to contain the training dataset. From there, create subfolders for each subset of the dataset. We divided the snake dataset into two subsets, dorsal and ventral. This is useful for comparing results from training on specific subsets. If you only need one subset for your dataset, then make a single folder. Note, the subset folders **cannot** be named "all".
- 
-Specify the training set folder in the config file:
-
-![training_dir](https://user-images.githubusercontent.com/44889226/138973171-e7d205cf-1c07-473c-a39a-96678ec6b459.png)
-
-If you want to use the neural network to detect the mask on a folder of images, simply upload the folder to the dataset folder and specify the folder in the config file contained in the log folder:
-
-![specify_test_set](https://user-images.githubusercontent.com/44889226/138973368-ab73eb5f-d9fa-4bbf-a3ad-c702aa6878d2.png)
-
-<a name="1.6"></a>
-## 1.6 Check Dataset
-You may check the dataset by running the check dataset cell block. Before running the cell block, set image_path to the path of the folder containing the dataset images, set label_path to the path of the folder containing the labels, set the start and end value to be the range of images to check (we suggest checking in batches of 50 because of limited ram resources), and set the mode to either "json" or "binary" depending on the type of label.
-
-![check dataset](https://user-images.githubusercontent.com/44889226/138973479-477136fe-0524-4482-b645-c01e7ef0b2e8.png)
-
-<a name="1.7"></a>
-## 1.7 Training the Neural Network
-
-<a name="1.7.1"></a>
-### 1.7.1 Training Process
-First, you must specify the weight files to begin the training from. We used the "coco" weight files, but alternatively you may begin training it from our weight file located at 'data/snake_epoch_16.h5':
-
-![specify_weights](https://user-images.githubusercontent.com/44889226/138974367-0fc17a0a-f137-4fa2-8c6f-f8e61c240b82.png)
-
-You may also change the training parameters in the config file to yield better training results for a custom dataset. See the paper for information on how to tweak the parameters.
- 
-Run the cell block to begin training. It took us ~24 hours to finish the training process.
-
-![current2](https://user-images.githubusercontent.com/44889226/158226955-0ddf61c4-81ee-4c9b-a4f8-71a3a0895c25.png)
-
-If the training process stops because Google Colab times out, you may resume the training process by setting the training weights to the last weight file save, which can be found in the weights folder contained in your logs folder. Running the cell block will then resume the training process with those weights. The number of epochs does **not** have to be changed. The code will automatically detect how many epochs are remaining.
-
-<a name="1.7.2"></a>
-### 1.7.2 Viewing Loss Values
-Once the training process is finished, you may view the loss values by specifying the weights output folder (which should be located under the weights folder in the log directory) and running this cell block:
-
-![image](https://user-images.githubusercontent.com/44889226/138975279-85428283-8268-489e-83d5-3b770a3619f7.png)
-
-After viewing the loss values, choose an epoch for inference and copy and paste the associated weight file path into the config file for inference and evaluation metrics:
-
-![specify_test_weights](https://user-images.githubusercontent.com/44889226/138975784-36ea2927-4811-4e6a-a665-e51039b1f716.png)
-
-<a name="1.7.3"></a>
-### 1.7.3 Evaluation Metrics
- 
-You can obtain the average IOU or IOL metrics for the validation partition for each subset of the training set.
-Run the evaluation metric code block:
-
-![Eval](https://user-images.githubusercontent.com/44889226/158228167-3db44182-00a2-4ab7-a67a-225d41c7a393.png)
-
-The evaluation metrics are run using the test weights specified in the config file.
-
-<a name="1.8"></a>
-## 1.8 Inference
-To generate masks for an unlabeled set of images choose the output type and run the inference cell block:
-
-![Detect](https://user-images.githubusercontent.com/44889226/158228672-ac328d84-15f3-4ff7-b8db-1bce59f6cac8.png)
-
-The output types are as follows: "json", "binary", and "splash".
-* "json" will output the mask in the same format as the json files used for training.
-* "binary" will output the mask as a csv file with each cell containing a zero or a one. This is the most universal style of output.
-* "splash" will output a copy of the original image but with a blue background. This is a non-functional output but can be used to determine the qualitative performance of the neural network.
-
-To use multiple output types, you can seperate them using the '&' character.
-For example, to create outputs for both "binary" and "splash", you would set the output type to be "binary&splash".
- 
-The inference is run on the test set folder specified in the config file using the test weight file specified in the config file. If you did not train the neural network and you can use the config file under 'data/snake-session' to test our weights.
- 
-The output folders are already specified in the config file and are located in the session folder.
- 
-If you need to resume the inference because Google Colab timed out, you may set resume to true and it will pick up based on the last output file in the output folder.
-
-### Scale Bar Culculator
-There is an optional additional step that can calculate the scale bar for each image by finding the uv circle within the image. This step requires a uv circle to be present in the images and can only run if the output type is "json". To enable this step, set "CALCULATE_SCALE_BAR" to "True"in the config file. You should adjust the "GREY_STD_RADIUS" to match the radius (in mm) of the uv circle in the images. Ours was 16.6085 mm. You may need to adjust the values under the "[SCALE BAR]" section. These are the minimum radius (in pixels) that the algorithm uses to find the circle. 650 pixels worked for all but one of the images in the snake datasets. To adjust the values for outlier images (ex, DSC_1705.jpg in the train_val_set), set the key to the name of the image minus the extension (ex, "DSC_1705") and set the value in units of pixels (we had to use 600 for "DSC_1705").
-
-<img width="576" alt="scale_bar_cal" src="https://user-images.githubusercontent.com/44889226/167962082-2584c854-5a1c-415f-bbbd-c6da31919310.png">
-
-<a name="1.9"></a>
-## 1.9 Creating A Metadata File
-
-![image](https://user-images.githubusercontent.com/44889226/139880037-a2f35d5e-71af-4ab9-9e79-15e8f360e4c2.png)
-
-The metadata file is an optional ".csv" file that will name the mask rois based off the data to the right of column A. Column A corresponds to the name of the source image, and the roi will be named using the scheme "ColumnB_ColumnC_ColumnD_...". For example, the mask roi for the first image would be named "RAB_249_d_uv".
+If you need to resume detection because Google Colab timed out or you ran into resource limits, set resume equal to True in the cell block and run again; Batch-Mask will resume from the last output file in the output folder.
 
 <a name="2"></a>
-# 2 ImageJ
+# 2 Implementing Batch-Mask on a custom set of images using our pre-trained weights
 
 <a name="2.1"></a>
-## 2.1 Setup
-Download the software from https://doi.org/10.7302/3xwv-7n71 and extract it.
+## 2.1 Downloading the code, creating a session folder, and adding a custom dataset
+Download the code and upload to Google Drive in the same way as described in 1.1. 
+In Google Drive, navigate to the datasets folder (“MyDrive/batch-mask-v1.0.0/data/datasets”) and create a new folder for your custom dataset. Upload all images that you wish to mask to this folder.
 
-Navigate to batch-mask/software/ImageJ and run ImageJ.exe
+The Google Colab script contains a cell block under the heading Custom Dataset that will generate a new session folder for your custom dataset and Batch-Mask outputs, as well as the necessary config file. Set the log_dir in the cell block to be the directory where you want your session folder to be located, and set the dataset_dir to the custom dataset directory. Click the play button on the cell block to create the new session folder.
+
+If desired, you can create custom folders for Batch-Mask to output files for your dataset. To create a custom output folder, navigate to the session folder (or the snake-session folder, if you did not create a new one [“MyDrive/batch-mask-v1.0.0/data/snake-session”]) and create (a) new subfolder(s) for your desired output type(s).
+
+If desired, you can also create a metadata file, an optional .csv file that allows Batch-Mask to automatically name the mask ROIs that it generates. To do this, simply create a .csv file, and in the first column, enter a list of all the source images to be masked. Mask ROI names will be created using any text or values entered in columns after Column A (up to three columns). When done creating this .csv file, upload it to the datasets folder (“MyDrive>batch-mask-v1.0.0>data>datasets”).
+
+Follow the rest of the instructions in 1.1 to open the Batch-Mask notebook in Google Colab.
 
 <a name="2.2"></a>
-## 2.2 Labeling Datasets
- 
-Open up the image to label inside ImageJ by either dragging it or going to File/Open
- 
-Press 't' to bring up the roi manager.
+## 2.2 Batch-Mask setup and editing the config file 
+Link your Google Drive account to the Colab notebook and navigate to the config file as described in 1.2. 
 
-![139877877-60fb4075-8d9c-472e-9f84-9bd9d32d04ce](https://user-images.githubusercontent.com/44889226/142041235-e7e10a6d-6d60-4fca-b44a-a0e4719ee644.png)
+Double click the config.ini file, and a new panel will pop up on the right-hand side, allowing you to edit it. Because you are using our pre-trained weights, you only need to edit Line 21. Enter the path to your custom dataset’s subfolder in this line (see 1.2 for how to copy paths in Google Colab). 
 
-Select the polygon tool to outline the mask of the specimen in the image.
- 
-For a specimen that is coiled (ex, a snake), first outline the entire specimen, then go to Edit->Selection->Make Inverse to invert the selection
+If you created (a) custom folder(s) for Batch-Mask outputs, you should enter the file path(s) to that/those folder(s) in Lines 24 to 26, depending on which output type(s) you desire. If you created a metadata file, you should enter the path to that .csv file in Line 28. 
 
-![Second](https://user-images.githubusercontent.com/44889226/139877914-aed015f3-aea0-4e54-9d95-d515eb1300e5.PNG)
+Batch-Mask is also able to generate a scale bar for each image if certain conditions are met. In our snake image dataset, and in many datasets that include visible and/or UV color standards, all photos included a circular color standard of known radius. If your images contain a circular standard and your output type is “json”, you can enable this scale bar detection step by editing Lines 12 and 13 of the config file. Simply enter the radius of the standard (our gray UV standard had a radius of 16.6085mm) into Line 12 and set “CALCULATE_SCALE_BAR” equal to “True” in Line 13. You may need to add a “[SCALE BAR]” section to the bottom of the config file. Here, you specify the minimum radius (in pixels) that the algorithm uses to find the circular standard. For our snake dataset, 550 pixels worked for all but one image. To adjust the values for outlier images, enter the name of the image (minus the file extension) and the specified number of pixels (e.g., for our outlier, we entered “DSC_1705 : 600”).
 
-While pressing shift, select the parts within the original selection that are not part of the specimen. This will create a composite (donut-like) shape.
+You can now close the config file editing panel. 
 
-![Third](https://user-images.githubusercontent.com/44889226/139877954-0418f957-1a48-4981-9897-da83da022239.PNG)
-
-Finally, go to Edit->Selection->Make Inverse to invert the selection again. Click add on the roi manager (or 't' for a shortcut), select the roi from the roi manager, and click rename to rename the roi to 'mask'.
- 
-If the specimen is not coiled, then simply use the polygon tool to outline the specimen. Click add on the roi manager (or 't' for a shortcut), select the roi from the roi manager, and click rename to rename the roi to 'mask'.
-
-![139879168-a24fdd3a-68b1-4098-8c4e-3c67079e47f1](https://user-images.githubusercontent.com/44889226/142041318-6b221c61-c3fd-4c98-ab67-5d3232920cd5.png)
-
-To export the labels to a json file, go to Plugins->JSON ROI->export and a save dialogue will pop up. The default name for the json file will be the same as the image file. There is no need to change the name since the training script links the json file to the jpeg file by filenames. Just click save.
-
-![Fifth (1)](https://user-images.githubusercontent.com/44889226/139879284-c5771605-d571-4f5a-a103-a4f695b51548.PNG)
-
-Close roi manager and the current open image before moving on to the next image. Click discard to any save messages that pop up after closing any windows.
+Click the play button on the cell block to install dependencies and run the setup script, then click the play button on the cell block to compile the code (as in 1.2).
 
 <a name="2.3"></a>
-## 2.3 Editing Labels
- 
-If exported labels need to be edited for any reason, open the image, press 't' to bring up the roi manager, then go to Plugins->JSON ROI->import and select the json file to import. The rois will then be loaded and the file can be edited. Then, use the same method as in the 'Labeling' section to export the json file.
+## 2.3 Implementation on a custom dataset
+Scroll down to the cell block under the Detect heading, select an output type (see 1.3), and press play to generate masks for the images in your custom dataset. Files generated by Batch-Mask will be outputted to the folder(s) specified in the config file.
 
-<a name="2.4"></a>
-## 2.4 Batch Generating Multispectral Images for MicaToolBox
+<a name="3"></a>
+# 3 Training and implementing Batch-Mask on a custom set of images using custom weights
 
-**Note, this portion of the tutorial can only be run on a Windows operating system**
+Note: Generating custom weights to use on a custom dataset involves training the neural network. The training process requires images that have been masked by hand. We provide instructions here for how to create these hand-drawn masks using ImageJ on a Windows operating system.
 
-Place the json files containing the labels for the masks and scale bars in a folder with the source images (see example below).
+<a name="3.1"></a>
+## 3.1 Creating training masks using ImageJ 
 
-If you want to use the images from our dataset, you must use these the non-color corrected images located under "data/imagej/non_color_corrected_images" in the Snake data folder.
+<a name="3.1.1"></a>
+### 3.1.1 ImageJ setup
+Download the code and upload to Google Drive in the same way as described in 1.1. In Google Drive, navigate to ImageJ (“batch-mask-v1.0.0/software/ImageJ”) and run “ImageJ.exe”.
 
-The human labeled json files are located under "data/imagej/labeled_masks" in the Snake data folder.
+<a name="3.1.2"></a>
+### 3.1.2 Labeling regions of interest (ROIs) in ImageJ
+Using “File->Open” in the ImageJ taskbar, open the image file to be labelled.
 
-The json files generated from Batch-Mask are located under "data/imagej/inference_masks" in the Snake data folder.
+Select the polygon tool to outline the specimen or region of interest in the image. 
 
-![image](https://user-images.githubusercontent.com/44889226/142065871-a1121d8d-5b0c-4fe1-8cf0-7f3f9d509156.png)
+For a specimen that is coiled (e.g., a snake), first outline the outer edge of the specimen, then click “Edit->Selection->Make Inverse” to invert the selection. While holding the shift key, outline the parts within the original selection that are not part of the specimen. This will create a composite, donut-like shape. Finally, click “Edit->Selection->Make Inverse” to invert the selection again. Click on the ROI Manager (or “t” for a shortcut), select the ROI from the ROI Manager, and click rename to rename the ROI to “mask”.
 
-Navigate to "batch-mask-main/software/ImageJ/plugins/Multispectral Imaging/" and open "\_Batch_Generate_Multispectral_Images.ijm" in a text editor.
-On line 55, set the directory variable to the directory that the json files and source images are stored.
-On line 56, set resume to "" is starting from the beginning, otherwise set it to the name of the image to start from (ex. "V8.jpg").
+For specimens that are not coiled, simply use the polygon tool to outline the specimen. Click on the ROI Manager (or “t” for a shortcut), select the ROI from the ROI Manager, and click rename to rename the ROI to “mask”.
 
-![gen_custom](https://user-images.githubusercontent.com/44889226/142077579-2b0883a1-04c7-4798-802d-8ba76bb32671.png)
+To export the labels to a .json file, go to “Plugins->JSON ROI->Export” and a save dialogue box will appear. The default name for the .json file will be the same as the image file. Do not change this name, as the training script in Batch-Mask links the .json file to the .jpg file using filenames. Click “Save”.
 
-Navigate to "batch-mask-main/software/ImageJ/plugins/JSON ROI/" and open "mica_import.py" in a text editor.
+Close the ROI Manager and the current open image before moving on to the next image. Feel free to click “Discard” on any save messages that pop up after closing windows.
 
-On line 31, set the directory variable to the directory that the json files and source images are stored.
+<a name="3.1.3"></a>
+### 3.1.3 Editing ROI labels in ImageJ
+If exported labels need to be edited for any reason, open the image in ImageJ, press 't' to bring up the ROI manager, then go to “Plugins->JSON ROI->Import” and select the .json file to import. This will load the ROIs, which can then be edited. Use the instructions in 3.1.2 to export the edited labels to a .json file when done.
 
-![import_mica](https://user-images.githubusercontent.com/44889226/142066631-195becca-3ec0-46df-8a25-b6311e552de6.png)
+<a name="3.2"></a>
+## 3.2 Downloading the code, creating a session folder, and adding custom training and inference datasets
+Follow the instructions in 2.1 to download the code, create a session folder, and add your custom dataset (the dataset on which you wish to run Batch-Mask once it has been trained).
 
-Navigate to "batch-mask-main/software/ImageJ/" and run "ImageJ.exe"
+In addition, make a folder in the datasets folder (“MyDrive>batch-mask-v1.0.0>data>datasets”) to contain the training dataset, and title this folder “train_val_sets”. If your training dataset has subcategories, make separate subfolders for each (e.g., we divided our snake dataset into two subsets, dorsal and ventral). This is useful for comparing results from training on specific subsets of the data. Note that subset folders **cannot** be named “all”. In your subfolders, or in the “train_val_sets” folder if you did not create subfolders, upload the .json files you created in ImageJ, as well the image file associated with each.
 
-Navigate to "Plugins-> Multispectral Imaging -> Batch Generate Multispectral Images" and left click to run the batch  multispectral images generator.
+Follow the rest of the instructions in 2.1 to open the Batch-Mask notebook in Google Colab. Link your Google Drive account to the Colab notebook as described in 1.2. 
 
-![run_script](https://user-images.githubusercontent.com/44889226/142079536-58e8662b-2af6-4d01-a7cc-1ac90e57f2fc.png)
+<a name="3.3"></a>
+## 3.3 Checking your training dataset
+To make sure your training images and .json files are all present and loading properly, you can check your dataset by running the cell block under the heading Check Dataset. Set the “images_path” AND the “labels_path” to the path where your “train_val_sets” folder is located. You can modify the start and end values (the range of images to check) if you wish, but we suggest checking in batches of 50 due to limited RAM resources. Set the mode to either “json” or “binary” depending on the type of label.
 
-Select the 5 percent color standard:
+<a name="3.4"></a>
+## 3.4 Training the neural network
 
-![5_percent](https://user-images.githubusercontent.com/44889226/142067813-16bdb2c7-e381-48b6-a554-bba03bbb93f1.png)
+<a name="3.4.1"></a>
+### 3.4.1 Beginning the training process
+Open the config.ini file for editing as described in 2.2. 
 
-Select the 95 percent color standard:
+Edit Line 18 to specify the path to the training set folder. You must also specify which weight files from which you would like to begin training. We used the “coco” weight files as our starting weights but may begin training from our weight file (“data/snake_epoch_16.h5”) if you wish.
 
-![95_percent](https://user-images.githubusercontent.com/44889226/142066651-9e6fc702-0425-4f7b-b091-89afe4915261.PNG)
+You may also change the training parameters in the config file to yield better training results for a custom dataset. See our paper for information and recommendations for adjusting parameters.
 
-Repeat the color selection for the entire folder.
+When done editing the config file, close it. Run the cell block under the heading Train to begin training. For our paper, it took approximately 24 hours to finish the training process.
 
-Once the script is finished, the MSPEC and ROI files will be saved in the same directory as the json files and source images. These must stay in the same directory for other MicatoolBox features to work.
+If the training process stops because Google Colab times out, you may resume the training process by setting the training weights to the last weight file save, which can be found in the weights folder on Google Drive. Running the cell block will then resume the training process with those weights. The number of epochs does **not** need to be changed. The code will automatically detect how many epochs are remaining.
 
-![image](https://user-images.githubusercontent.com/44889226/142065784-fc1aab3c-e211-469c-b76b-5247374a5138.png)
+<a name="3.4.2"></a>
+### 3.4.2 Viewing loss values
+Once the training process has finished, you can view the loss values using the second cell block under the Train heading. Specify the weights output folder and click the play button.
 
-You can follow this youtube tutorial to replicate the Pattern Processing we performed for the Batch-Mask paper: https://youtu.be/T62fr25b75M?t=3281
+After viewing the loss values choose an epoch for inference/detection. Copy and paste the associated weight file path into the config.ini file on Line 22.
 
-<a name="2.5"></a>
-## 2.5 Editing Multispectral Image Files
+<a name="3.4.3"></a>
+### 3.4.3 Evaluation metrics
+To obtain the average IOU or IOL metrics for the validation partition for each subset of the training set, run the cell block under the heading Get Model Metric. Note that evaluation metrics are running using the test weights specified in the config file.
 
-<a name="2.5.1"></a>
-### 2.5.1 Importing Multispectral Image Files
+<a name="3.5"></a>
+## 3.5 Implementing Batch-Mask using custom generated weights
+Ensure that the path to the appropriate weight file and the path to your custom, unlabeled dataset have been entered in the config file. Follow the directions in 2.3 to implement Batch-Mask.
 
-To open a multispectral image, go to Plugins->Multispectral Imaging->Load Multispectral Image
+<a name="4"></a>
+# 4 Preparing Batch-Mask outputs for downstream analysis in micaToolbox
 
-![Load multispectral](https://user-images.githubusercontent.com/44889226/143925929-555e8f08-92c1-4040-8ee6-bed514d940ee.png)
+Note: The following tutorial was written for a Windows operating system and includes instructions for how to generate and edit multispectral images using our sample dataset. 
 
-Open the ".mspec" file to edit.
+<a name="4.1"></a>
+## 4.1 Batch generating multispectral (.mspec) images for micaToolbox
 
-![open mspec file](https://user-images.githubusercontent.com/44889226/143926213-eec83317-6406-4f9d-a793-47ef7db7b70a.png)
+After downloading, unzipping, and uploading the Batch-Mask repository to Google Drive (as in 1.1), navigate to “batch-mask-v1.0.0/data/imagej”. Note that the non-color-corrected images are located in the folder “data/imagej/non_color_corrected_images”, the .json masks created by hand in ImageJ are in the folder “data/imagej/training_masks”, and the .json masks generated from Batch-Mask are located in the folder “data/imagej/inference_masks”.
 
-Leave the image output as the default "Aligned Normalised 32-bit" and click "OK".
+Create a new folder and copy or move the non-color-corrected images and .json files containing the labels for the masks (and scale bars, if generated) into it. 
 
-![Image_output](https://user-images.githubusercontent.com/44889226/143925933-b3598132-ecd7-4d1f-90b5-71950c5b8c02.png)
+In Google Drive, navigate to "batch-mask-v1.0.0/code/scripts" and open "_Generate_Multispectral_Image_Costum.ijm" in a text editor. On Line 55, set the path to the folder in which the .json files and source images are stored. On Line 56, set resume to "" if starting from the beginning. If resuming from an earlier session, set resume to the name of the image you wish to start from (e.g., "V8.jpg").
 
-<a name="2.5.2"></a>
-### 2.5.2 Changing The Mask
-To edit the mask click on the mask ROI in the ROI Manager and moving arounds the nodes. You can then press 'Update' in the ROI Manager to apply the changes and '0' on the keyboard to save the MSPEC file.
-![roi](https://user-images.githubusercontent.com/44889226/143926135-e5310c56-798a-40e2-bf06-82d52fa006c1.PNG)
+In Google Drive, navigate to " batch-mask-v1.0.0/code/scripts/JSON ROI/" and open "mica_import.py" in a text editor.
 
-<a name="2.5.3"></a>
-### 2.5.3 Adding A Scale Bar
-It is possible to add a scale bar to the mspec image (ex. the images didn't have a UV circle so you need to add a scale bar manually).
+On Line 31, set the directory variable to the folder in which the json files and source images are stored.
 
-Click on the 'Straight' selector.
+Finally, navigate to “batch-mask-v1.0.0/software/ImageJ” and click “ImageJ.exe”.
 
-![Line tool](https://user-images.githubusercontent.com/44889226/143926305-9960adc1-639c-415c-af06-7c52fc0ae741.png)
+In ImageJ, click “Plugins->Multispectral Imaging->Batch Generate Multispectral Images”.
 
-Outline a known measurement in the image (ex. a ruler).
+Select the 5 percent color standard.
 
-![outline_ruler](https://user-images.githubusercontent.com/44889226/143926366-924e09ba-12ea-44fd-b11c-266c21680ee7.png)
+Select the 95 percent color standard.
 
-Press 'S' on the keyboard and enter the length of the scale bar. You may use any units but you must be consistant. We used millimeters for our units.
+Repeat the color standard selection for the entire folder.
 
-![scale](https://user-images.githubusercontent.com/44889226/148101699-45d87e04-bde0-42f3-a78c-972b19d19e9b.png)
+Once the script is finished, the .mspec and ROI files will be saved in the same directory as the .json files and source images. These must stay in the same directory for other micaToolbox features to work.
 
-Click 'Ok' and press '0' on the keyboard to save.
-If you wish to edit the scale bar, you need to delete the ROI from the roi manager and then create a new scale bar from scratch.
+You can follow this Youtube tutorial to replicate the pattern processing we performed for our paper: https://youtu.be/T62fr25b75M?t=3281
+
+<a name="4.2"></a>
+## 4.2 Editing multispectral image files
+
+To open a multispectral image in imageJ, go to “Plugins->Multispectral Imaging->Load Multispectral Image” and select the desired .mspec file. Leave the image output as the default “Aligned Normalised 32-bit” and click “OK”.
+
+To edit the mask, click on its ROI in the ROI Manager and adjust the mask’s nodes as necessary. Click ‘Update’ in the ROI Manager to apply the changes and type ‘0’ to save the .mspec file.
+
+If you would like to add a scale bar to your .mspec image (if, for example, your images did not have a circular color standard for Batch-Mask to detect), you can do so in imageJ.
+
+Click on the “Straight” selector.
+Outline an object or portion of an object of known size in the image (e.g., a ruler).
+Type “S” and enter the length of the scale bar in the window that appears. Make sure your units of measurement are correct. Click “OK”. Type “0” to save the .mspec. If you wish to edit the scale bar, simply delete the scale bar’s ROI from the ROI Manager and create a new one.
 
 <a name="source"></a>
 # Source Repositories and Software
 * Original Mask RCNN Repository: https://github.com/matterport/Mask_RCNN
 * Updated Mask RCNN for Tensorflow 2: https://github.com/akTwelve/Mask_RCNN
-* MicatoolBox version 1 website: http://www.jolyon.co.uk/myresearch/image-analysis/image-analysis-tools/
+* micaToolbox version 1 website: http://www.jolyon.co.uk/myresearch/image-analysis/image-analysis-tools/
 * ImageJ version 1 website: https://imagej.nih.gov/ij/download.html
-
