@@ -41,9 +41,9 @@ This README file includes a tutorial and information for 1) implementing Batch-M
 
 <a name="1.1"></a>
 ## 1.1 Downloading the code
-Download the zipped repository (batch-mask-v1.0.0.zip or newer version) from https://doi.org/10.7302/3xwv-7n71, extract/unzip if necessary, and upload the folder to your “My Drive” folder on Google Drive.
+Download the newest zipped repository (batch-mask-v1.0.2.zip) from https://doi.org/10.7302/3xwv-7n71, extract/unzip if necessary, and upload the folder to your “My Drive” folder on Google Drive.
 
-Navigate to the repository in Google Drive and find “batch_mask.ipynb” in “batch-mask-v1.0.0/code/scripts”. Right-click the ipynb file, then click “Open with” and select Google Colaboratory (hereafter referred to as “Google Colab”). If Google Colab is not available as an option, you may have to select “Connect more apps” and add the Google Colab app. The notebook should open in a new window.
+Navigate to the repository in Google Drive and find “batch_mask.ipynb” in “batch-mask-v1.0.2/code/scripts”. Right-click the ipynb file, then click “Open with” and select Google Colaboratory (hereafter referred to as “Google Colab”). If Google Colab is not available as an option, you may have to select “Connect more apps” and add the Google Colab app. The notebook should open in a new window.
 
 <a name="1.2"></a>
 ## 1.2 Batch-Mask setup
@@ -51,7 +51,7 @@ In order to use the Batch-Mask script, you must first link your Google Drive fol
 
 ![Link_to_gdrive](https://user-images.githubusercontent.com/44889226/168399150-c56d8ba7-78a0-489a-a593-c8ac714a633e.jpg)
 
-Next, check the second cell block and ensure that the file path to your config file is correct. You can check file paths and modify files within the Google Colab notebook by clicking the folder icon on the left-hand side of the screen. In the side panel that pops up, navigate to the config file. If you are using the provided config.ini file, it should be located in “drive/MyDrive/batch-mask-v1.0.0/data/snake-session”. You can edit this file by double clicking it (opens in a new panel on the right-hand side of the screen) or copy its file path by right clicking it and selecting “Copy path”. This config file should be edited when using custom datasets or weights, but to reproduce the results of our paper, it does not need to be edited. Click the play button in this cell block to install the dependencies and run the setup script.
+Next, check the second cell block and ensure that the file path to your config file is correct. You can check file paths and modify files within the Google Colab notebook by clicking the folder icon on the left-hand side of the screen. In the side panel that pops up, navigate to the config file. If you are using the provided config.ini file, it should be located in “drive/MyDrive/batch-mask-v1.0.2/data/snake-session”. You can edit this file by double clicking it (opens in a new panel on the right-hand side of the screen) or copy its file path by right clicking it and selecting “Copy path”. This config file should be edited when using custom datasets or weights, but to reproduce the results of our paper, it does not need to be edited. Click the play button in this cell block to install the dependencies and run the setup script.
 
 After this cell block has completed, scroll down to the cell block under the Code heading and click the play button to compile the code. Once this has finished running, the Batch-Mask script is ready to be implemented.
 
@@ -74,13 +74,13 @@ If you need to resume detection because Google Colab timed out or you ran into r
 <a name="2.1"></a>
 ## 2.1 Downloading the code, creating a session folder, and adding a custom dataset
 Download the code and upload to Google Drive in the same way as described in 1.1. 
-In Google Drive, navigate to the datasets folder (“MyDrive/batch-mask-v1.0.0/data/datasets”) and create a new folder for your custom dataset. Upload all images that you wish to mask to this folder.
+In Google Drive, navigate to the datasets folder (“MyDrive/batch-mask-v1.0.2/data/datasets”) and create a new folder for your custom dataset. Upload all images that you wish to mask to this folder.
 
 The Google Colab script contains a cell block under the heading Custom Dataset that will generate a new session folder for your custom dataset and Batch-Mask outputs, as well as the necessary config file. Set the log_dir in the cell block to be the directory where you want your session folder to be located, and set the dataset_dir to the custom dataset directory. Click the play button on the cell block to create the new session folder.
 
-If desired, you can create custom folders for Batch-Mask to output files for your dataset. To create a custom output folder, navigate to the session folder (or the snake-session folder, if you did not create a new one [“MyDrive/batch-mask-v1.0.0/data/snake-session”]) and create (a) new subfolder(s) for your desired output type(s).
+If desired, you can create custom folders for Batch-Mask to output files for your dataset. To create a custom output folder, navigate to the session folder (or the snake-session folder, if you did not create a new one [“MyDrive/batch-mask-v1.0.2/data/snake-session”]) and create (a) new subfolder(s) for your desired output type(s).
 
-If desired, you can also create a metadata file, an optional .csv file that allows Batch-Mask to automatically name the mask ROIs that it generates. To do this, simply create a .csv file, and in the first column, enter a list of all the source images to be masked. Mask ROI names will be created using any text or values entered in columns after Column A (up to three columns). When done creating this .csv file, upload it to the datasets folder (“MyDrive>batch-mask-v1.0.0>data>datasets”).
+If desired, you can also create a metadata file, an optional .csv file that allows Batch-Mask to automatically name the mask ROIs that it generates. To do this, simply create a .csv file, and in the first column, enter a list of all the source images to be masked. Mask ROI names will be created using any text or values entered in columns after Column A (up to three columns). When done creating this .csv file, upload it to the datasets folder (“MyDrive>batch-mask-v1.0.2>data>datasets”).
 
 ![meta_data](https://user-images.githubusercontent.com/44889226/168399705-ea6e9354-6673-4992-b2a2-218205cb2293.png)
 
@@ -118,7 +118,7 @@ Note: Generating custom weights to use on a custom dataset involves training the
 
 <a name="3.1.1"></a>
 ### 3.1.1 ImageJ setup
-Download the code but instead of uploading it to Google Drive, extract it locally. In the extracted folder, navigate to ImageJ (“batch-mask-v1.0.0/software/ImageJ”) and run “ImageJ.exe”.
+Download the code but instead of uploading it to Google Drive, extract it locally. In the extracted folder, navigate to ImageJ (“batch-mask-v1.0.2/software/ImageJ”) and run “ImageJ.exe”.
 
 <a name="3.1.2"></a>
 ### 3.1.2 Labeling regions of interest (ROIs) in ImageJ
@@ -157,7 +157,7 @@ If exported labels need to be edited for any reason, open the image in ImageJ, p
 ## 3.2 Downloading the code, creating a session folder, and adding custom training and inference datasets
 Follow the instructions in 2.1 to download the code, create a session folder, and add your custom dataset (the dataset on which you wish to run Batch-Mask once it has been trained).
 
-In addition, make a folder in the datasets folder (“MyDrive>batch-mask-v1.0.0>data>datasets”) to contain the training dataset, and title this folder “train_val_sets”. If your training dataset has subcategories, make separate subfolders for each (e.g., we divided our snake dataset into two subsets, dorsal and ventral). This is useful for comparing results from training on specific subsets of the data. Note that subset folders **cannot** be named “all”. In your subfolders, or in the “train_val_sets” folder if you did not create subfolders, upload the .json files you created in ImageJ, as well the image file associated with each.
+In addition, make a folder in the datasets folder (“MyDrive>batch-mask-v1.0.2>data>datasets”) to contain the training dataset, and title this folder “train_val_sets”. If your training dataset has subcategories, make separate subfolders for each (e.g., we divided our snake dataset into two subsets, dorsal and ventral). This is useful for comparing results from training on specific subsets of the data. Note that subset folders **cannot** be named “all”. In your subfolders, or in the “train_val_sets” folder if you did not create subfolders, upload the .json files you created in ImageJ, as well the image file associated with each.
 
 Follow the rest of the instructions in 2.1 to open the Batch-Mask notebook in Google Colab. Link your Google Drive account to the Colab notebook as described in 1.2. 
 
@@ -204,23 +204,23 @@ Note: The following tutorial was written for a Windows operating system and incl
 <a name="4.1"></a>
 ## 4.1 Batch generating multispectral (.mspec) images for micaToolbox
 
-After downloading and unzipping (as in 3.1.1), navigate to “batch-mask-v1.0.0/data/imagej”. Note that the non-color-corrected images are located in the folder “data/imagej/non_color_corrected_images”, the .json masks created by hand in ImageJ are in the folder “data/imagej/training_masks”, and the .json masks generated from Batch-Mask are located in the folder “data/imagej/inference_masks”.
+After downloading and unzipping (as in 3.1.1), navigate to “batch-mask-v1.0.2/data/imagej”. Note that the non-color-corrected images are located in the folder “data/imagej/non_color_corrected_images”, the .json masks created by hand in ImageJ are in the folder “data/imagej/training_masks”, and the .json masks generated from Batch-Mask are located in the folder “data/imagej/inference_masks”.
 
 Create a new folder and copy or move the non-color-corrected images and .json files containing the labels for the masks (and scale bars, if generated) into it.
 
 ![batch_gen_s1](https://user-images.githubusercontent.com/44889226/168400922-e8b05fcb-7143-49d3-b7c1-c442efa62138.png)
 
-In the extracted folder, navigate to "batch-mask-v1.0.0/code/scripts" and open "_Batch_Generate_Multispectral_Images.ijm" in a text editor. On Line 55, set the path to the folder in which the .json files and source images are stored. On Line 56, set resume to "" if starting from the beginning. If resuming from an earlier session, set resume to the name of the image you wish to start from (e.g., "V8.jpg").
+In the extracted folder, navigate to "batch-mask-v1.0.2/code/scripts" and open "_Batch_Generate_Multispectral_Images.ijm" in a text editor. On Line 55, set the path to the folder in which the .json files and source images are stored. On Line 56, set resume to "" if starting from the beginning. If resuming from an earlier session, set resume to the name of the image you wish to start from (e.g., "V8.jpg").
 
 ![batch_gen_s2](https://user-images.githubusercontent.com/44889226/168400928-f67b0d03-aa79-4a31-9a6d-be59e09afb15.png)
 
-In the extraected folder, navigate to "batch-mask-v1.0.0/code/scripts/JSON ROI/" and open "mica_import.py" in a text editor.
+In the extraected folder, navigate to "batch-mask-v1.0.2/code/scripts/JSON ROI/" and open "mica_import.py" in a text editor.
 
 On Line 31, set the directory variable to the folder in which the json files and source images are stored.
 
 ![batch_gen_s3](https://user-images.githubusercontent.com/44889226/168400939-393d3309-893b-4bf7-bc64-b980caf0de88.png)
 
-Finally, navigate to “batch-mask-v1.0.0/software/ImageJ” and click “ImageJ.exe”.
+Finally, navigate to “batch-mask-v1.0.2/software/ImageJ” and click “ImageJ.exe”.
 
 In ImageJ, click “Plugins->Multispectral Imaging->Batch Generate Multispectral Images”.
 
