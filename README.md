@@ -47,7 +47,9 @@ Navigate to the repository in Google Drive and find “batch_mask.ipynb” in �
 
 <a name="1.2"></a>
 ## 1.2 Batch-Mask setup
-In order to use the Batch-Mask script, you must first link your Google Drive folder to Google Colab. Press play on the first cell block. You will be asked to give Google Colab permission to access Google Drive. Follow the on-screen prompts to sign in to your Google account. 
+In order to use the Batch-Mask script, you must first link your Google Drive folder to Google Colab. Press play on the first cell block. You will be asked to give Google Colab permission to access Google Drive. Follow the on-screen prompts to sign in to your Google account.
+
+![Link_to_gdrive](https://user-images.githubusercontent.com/44889226/168399150-c56d8ba7-78a0-489a-a593-c8ac714a633e.jpg)
 
 Next, check the second cell block and ensure that the file path to your config file is correct. You can check file paths and modify files within the Google Colab notebook by clicking the folder icon on the left-hand side of the screen. In the side panel that pops up, navigate to the config file. If you are using the provided config.ini file, it should be located in “drive/MyDrive/batch-mask-v1.0.0/data/snake-session”. You can edit this file by double clicking it (opens in a new panel on the right-hand side of the screen) or copy its file path by right clicking it and selecting “Copy path”. This config file should be edited when using custom datasets or weights, but to reproduce the results of our paper, it does not need to be edited. Click the play button in this cell block to install the dependencies and run the setup script.
 
