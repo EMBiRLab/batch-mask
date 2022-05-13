@@ -28,7 +28,7 @@ def get_roi(data):
 rm = RoiManager.getInstance()
 
 if rm:
-    directory = "C:/Users/timre/Desktop/tutorial set/"
+    directory = "C:/Users/timre/Desktop/tutorial set/" # SET DATASET PATH HERE
     imp = IJ.getImage()
     name = directory + imp.title[:-4] + '.json'
     file = open(name,'r')

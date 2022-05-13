@@ -52,15 +52,22 @@ requires("1.52");
 // DCRAW import linear:
 
 
-directory = "C:/Users/timre/Desktop/tutorial set/";
-resume = "";
+directory = "C:/Users/timre/Desktop/tutorial set/"; // SET DATASET DIRECTORY HERE
+resume = ""; // SET FILE TO BE RESUMED HERE
 
 files = getFileList(directory);
 images = newArray(0);
 
 for (i = 0; i < (files.length); i++){
 	extension = files[i].substring(files[i].length - 3);
-	if(extension == "jpg" || extension == "JPG") {
+	if(
+		extension == "jpg" || 
+		extension == "JPG" || 
+		extension == "png" || 
+		extension == "PNG" ||
+		extension == "nef" || 
+		extension == "NEF"  
+	) {
 		images = Array.concat(images, newArray(files[i]));
 	}
 }
