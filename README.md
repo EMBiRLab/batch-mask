@@ -1,5 +1,5 @@
 # Table of Contents
-[Introduction] (#intro)
+[Introduction](#intro)
 
 1 [Implementing Batch-Mask on a sample dataset to reproduce the results from our paper](#1)
 * 1.1 [Downloading the code](#1.1)
