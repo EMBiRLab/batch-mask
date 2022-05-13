@@ -110,7 +110,7 @@ Note: Generating custom weights to use on a custom dataset involves training the
 
 <a name="3.1.1"></a>
 ### 3.1.1 ImageJ setup
-Download the code and upload to Google Drive in the same way as described in 1.1. In Google Drive, navigate to ImageJ (“batch-mask-v1.0.0/software/ImageJ”) and run “ImageJ.exe”.
+Download the code but instead of uploading it to Google Drive, extract it locally. In the extracted folder, navigate to ImageJ (“batch-mask-v1.0.0/software/ImageJ”) and run “ImageJ.exe”.
 
 <a name="3.1.2"></a>
 ### 3.1.2 Labeling regions of interest (ROIs) in ImageJ
