@@ -179,7 +179,7 @@ Note: The following tutorial was written for a Windows operating system and incl
 <a name="4.1"></a>
 ## 4.1 Batch generating multispectral (.mspec) images for micaToolbox
 
-After downloading, unzipping, and uploading the Batch-Mask repository to Google Drive (as in 1.1), navigate to “batch-mask-v1.0.0/data/imagej”. Note that the non-color-corrected images are located in the folder “data/imagej/non_color_corrected_images”, the .json masks created by hand in ImageJ are in the folder “data/imagej/training_masks”, and the .json masks generated from Batch-Mask are located in the folder “data/imagej/inference_masks”.
+After downloading and unzipping (as in 3.1.1), navigate to “batch-mask-v1.0.0/data/imagej”. Note that the non-color-corrected images are located in the folder “data/imagej/non_color_corrected_images”, the .json masks created by hand in ImageJ are in the folder “data/imagej/training_masks”, and the .json masks generated from Batch-Mask are located in the folder “data/imagej/inference_masks”.
 
 Create a new folder and copy or move the non-color-corrected images and .json files containing the labels for the masks (and scale bars, if generated) into it. 
 
