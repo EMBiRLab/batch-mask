@@ -53,7 +53,11 @@ In order to use the Batch-Mask script, you must first link your Google Drive fol
 
 Next, check the second cell block and ensure that the file path to your config file is correct. You can check file paths and modify files within the Google Colab notebook by clicking the folder icon on the left-hand side of the screen. In the side panel that pops up, navigate to the config file. If you are using the provided config.ini file, it should be located in “drive/MyDrive/batch-mask-v1.0.0/data/snake-session”. You can edit this file by double clicking it (opens in a new panel on the right-hand side of the screen) or copy its file path by right clicking it and selecting “Copy path”. This config file should be edited when using custom datasets or weights, but to reproduce the results of our paper, it does not need to be edited. Click the play button in this cell block to install the dependencies and run the setup script.
 
+![Install_block](https://user-images.githubusercontent.com/44889226/168399472-c9db3639-54fa-446a-ab22-42efc9af8e98.jpg)
+
 After this cell block has completed, scroll down to the cell block under the Code heading and click the play button to compile the code. Once this has finished running, the Batch-Mask script is ready to be implemented. 
+
+![compile_block](https://user-images.githubusercontent.com/44889226/168399489-6c326698-778f-43bb-958e-4be88dc5c00b.png)
 
 <a name="1.3"></a>
 ## 1.3 Implementation on a sample dataset
