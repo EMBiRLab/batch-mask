@@ -53,11 +53,7 @@ In order to use the Batch-Mask script, you must first link your Google Drive fol
 
 Next, check the second cell block and ensure that the file path to your config file is correct. You can check file paths and modify files within the Google Colab notebook by clicking the folder icon on the left-hand side of the screen. In the side panel that pops up, navigate to the config file. If you are using the provided config.ini file, it should be located in “drive/MyDrive/batch-mask-v1.0.0/data/snake-session”. You can edit this file by double clicking it (opens in a new panel on the right-hand side of the screen) or copy its file path by right clicking it and selecting “Copy path”. This config file should be edited when using custom datasets or weights, but to reproduce the results of our paper, it does not need to be edited. Click the play button in this cell block to install the dependencies and run the setup script.
 
-![Install_block](https://user-images.githubusercontent.com/44889226/168399472-c9db3639-54fa-446a-ab22-42efc9af8e98.jpg)
-
-After this cell block has completed, scroll down to the cell block under the Code heading and click the play button to compile the code. Once this has finished running, the Batch-Mask script is ready to be implemented. 
-
-![compile_block](https://user-images.githubusercontent.com/44889226/168399489-6c326698-778f-43bb-958e-4be88dc5c00b.png)
+After this cell block has completed, scroll down to the cell block under the Code heading and click the play button to compile the code. Once this has finished running, the Batch-Mask script is ready to be implemented.
 
 <a name="1.3"></a>
 ## 1.3 Implementation on a sample dataset
@@ -86,17 +82,23 @@ If desired, you can create custom folders for Batch-Mask to output files for you
 
 If desired, you can also create a metadata file, an optional .csv file that allows Batch-Mask to automatically name the mask ROIs that it generates. To do this, simply create a .csv file, and in the first column, enter a list of all the source images to be masked. Mask ROI names will be created using any text or values entered in columns after Column A (up to three columns). When done creating this .csv file, upload it to the datasets folder (“MyDrive>batch-mask-v1.0.0>data>datasets”).
 
+![meta_data](https://user-images.githubusercontent.com/44889226/168399705-ea6e9354-6673-4992-b2a2-218205cb2293.png)
+
 Follow the rest of the instructions in 1.1 to open the Batch-Mask notebook in Google Colab.
 
 <a name="2.2"></a>
 ## 2.2 Batch-Mask setup and editing the config file 
 Link your Google Drive account to the Colab notebook and navigate to the config file as described in 1.2. 
 
-Double click the config.ini file, and a new panel will pop up on the right-hand side, allowing you to edit it. Because you are using our pre-trained weights, you only need to edit Line 21. Enter the path to your custom dataset’s subfolder in this line (see 1.2 for how to copy paths in Google Colab). 
+Double click the config.ini file, and a new panel will pop up on the right-hand side, allowing you to edit it. Because you are using our pre-trained weights, you only need to edit Line 21. Enter the path to your custom dataset’s subfolder in this line (see 1.2 for how to copy paths in Google Colab).
+
+![config_datasets](https://user-images.githubusercontent.com/44889226/168399898-731844d6-41fd-4e29-a186-3f87d6770af2.png)
 
 If you created (a) custom folder(s) for Batch-Mask outputs, you should enter the file path(s) to that/those folder(s) in Lines 24 to 26, depending on which output type(s) you desire. If you created a metadata file, you should enter the path to that .csv file in Line 28. 
 
 Batch-Mask is also able to generate a scale bar for each image if certain conditions are met. In our snake image dataset, and in many datasets that include visible and/or UV color standards, all photos included a circular color standard of known radius. If your images contain a circular standard and your output type is “json”, you can enable this scale bar detection step by editing Lines 12 and 13 of the config file. Simply enter the radius of the standard (our gray UV standard had a radius of 16.6085mm) into Line 12 and set “CALCULATE_SCALE_BAR” equal to “True” in Line 13. You may need to add a “[SCALE BAR]” section to the bottom of the config file. Here, you specify the minimum radius (in pixels) that the algorithm uses to find the circular standard. For our snake dataset, 550 pixels worked for all but one image. To adjust the values for outlier images, enter the name of the image (minus the file extension) and the specified number of pixels (e.g., for our outlier, we entered “DSC_1705 : 600”).
+
+<img width="576" alt="scale_bar" src="https://user-images.githubusercontent.com/44889226/168399775-1815fbd7-e8eb-418c-a493-80a22f81f15c.png">
 
 You can now close the config file editing panel. 
 
@@ -122,13 +124,28 @@ Download the code but instead of uploading it to Google Drive, extract it locall
 ### 3.1.2 Labeling regions of interest (ROIs) in ImageJ
 Using “File->Open” in the ImageJ taskbar, open the image file to be labelled.
 
-Select the polygon tool to outline the specimen or region of interest in the image. 
+Select the polygon tool to outline the specimen or region of interest in the image.
 
-For a specimen that is coiled (e.g., a snake), first outline the outer edge of the specimen, then click “Edit->Selection->Make Inverse” to invert the selection. While holding the shift key, outline the parts within the original selection that are not part of the specimen. This will create a composite, donut-like shape. Finally, click “Edit->Selection->Make Inverse” to invert the selection again. Click on the ROI Manager (or “t” for a shortcut), select the ROI from the ROI Manager, and click rename to rename the ROI to “mask”.
+![label_s1](https://user-images.githubusercontent.com/44889226/168399958-6a13bdec-e55c-4221-a4a1-7f59a29cbd1e.png)
+
+For a specimen that is coiled (e.g., a snake), first outline the outer edge of the specimen, then click “Edit->Selection->Make Inverse” to invert the selection.
+
+![label_s2](https://user-images.githubusercontent.com/44889226/168399970-0a1399ef-5638-478b-8f30-f9ca72299dba.png)
+
+While holding the shift key, outline the parts within the original selection that are not part of the specimen. This will create a composite, donut-like shape.
+
+![label_s3](https://user-images.githubusercontent.com/44889226/168400003-c626a0b3-64d7-41c6-9db5-081c1ae30456.png)
+
+
+Finally, click “Edit->Selection->Make Inverse” to invert the selection again. Click on the ROI Manager (or “t” for a shortcut), select the ROI from the ROI Manager, and click rename to rename the ROI to “mask”.
+
+![label_s4](https://user-images.githubusercontent.com/44889226/168400024-11076587-4df2-4020-8c61-73835956fe96.png)
 
 For specimens that are not coiled, simply use the polygon tool to outline the specimen. Click on the ROI Manager (or “t” for a shortcut), select the ROI from the ROI Manager, and click rename to rename the ROI to “mask”.
 
 To export the labels to a .json file, go to “Plugins->JSON ROI->Export” and a save dialogue box will appear. The default name for the .json file will be the same as the image file. Do not change this name, as the training script in Batch-Mask links the .json file to the .jpg file using filenames. Click “Save”.
+
+![label_s5](https://user-images.githubusercontent.com/44889226/168400036-061dd634-d2d8-43bf-b743-86313a297700.png)
 
 Close the ROI Manager and the current open image before moving on to the next image. Feel free to click “Discard” on any save messages that pop up after closing windows.
 
@@ -167,7 +184,9 @@ If the training process stops because Google Colab times out, you may resume the
 ### 3.4.2 Viewing loss values
 Once the training process has finished, you can view the loss values using the second cell block under the Train heading. Specify the weights output folder and click the play button.
 
-After viewing the loss values choose an epoch for inference/detection. Copy and paste the associated weight file path into the config.ini file on Line 22.
+![loss_values](https://user-images.githubusercontent.com/44889226/168400134-368a2953-ba83-4bf2-86fe-5b8778620344.png)
+
+After viewing the loss values choose an epoch for inference/detection. Copy and paste the test weights file path into the config.ini file on Line 22.
 
 <a name="3.4.3"></a>
 ### 3.4.3 Evaluation metrics
@@ -187,25 +206,39 @@ Note: The following tutorial was written for a Windows operating system and incl
 
 After downloading and unzipping (as in 3.1.1), navigate to “batch-mask-v1.0.0/data/imagej”. Note that the non-color-corrected images are located in the folder “data/imagej/non_color_corrected_images”, the .json masks created by hand in ImageJ are in the folder “data/imagej/training_masks”, and the .json masks generated from Batch-Mask are located in the folder “data/imagej/inference_masks”.
 
-Create a new folder and copy or move the non-color-corrected images and .json files containing the labels for the masks (and scale bars, if generated) into it. 
+Create a new folder and copy or move the non-color-corrected images and .json files containing the labels for the masks (and scale bars, if generated) into it.
 
-In Google Drive, navigate to "batch-mask-v1.0.0/code/scripts" and open "_Generate_Multispectral_Image_Costum.ijm" in a text editor. On Line 55, set the path to the folder in which the .json files and source images are stored. On Line 56, set resume to "" if starting from the beginning. If resuming from an earlier session, set resume to the name of the image you wish to start from (e.g., "V8.jpg").
+![batch_gen_s1](https://user-images.githubusercontent.com/44889226/168400922-e8b05fcb-7143-49d3-b7c1-c442efa62138.png)
 
-In Google Drive, navigate to " batch-mask-v1.0.0/code/scripts/JSON ROI/" and open "mica_import.py" in a text editor.
+In the extracted folder, navigate to "batch-mask-v1.0.0/code/scripts" and open "_Batch_Generate_Multispectral_Images.ijm" in a text editor. On Line 55, set the path to the folder in which the .json files and source images are stored. On Line 56, set resume to "" if starting from the beginning. If resuming from an earlier session, set resume to the name of the image you wish to start from (e.g., "V8.jpg").
+
+![batch_gen_s2](https://user-images.githubusercontent.com/44889226/168400928-f67b0d03-aa79-4a31-9a6d-be59e09afb15.png)
+
+In the extraected folder, navigate to "batch-mask-v1.0.0/code/scripts/JSON ROI/" and open "mica_import.py" in a text editor.
 
 On Line 31, set the directory variable to the folder in which the json files and source images are stored.
+
+![batch_gen_s3](https://user-images.githubusercontent.com/44889226/168400939-393d3309-893b-4bf7-bc64-b980caf0de88.png)
 
 Finally, navigate to “batch-mask-v1.0.0/software/ImageJ” and click “ImageJ.exe”.
 
 In ImageJ, click “Plugins->Multispectral Imaging->Batch Generate Multispectral Images”.
 
+![batch_gen_s4](https://user-images.githubusercontent.com/44889226/168400948-6a71106e-27e4-4dec-840b-c71d30f1ae15.png)
+
 Select the 5 percent color standard.
 
+![batch_gen_s5](https://user-images.githubusercontent.com/44889226/168400958-1f9fcf2e-5dca-4cf3-943c-25ca4eb325f1.png)
+
 Select the 95 percent color standard.
+
+![batch_gen_s6](https://user-images.githubusercontent.com/44889226/168400962-c5266d35-a1b2-4caa-9899-91bc40f8e746.png)
 
 Repeat the color standard selection for the entire folder.
 
 Once the script is finished, the .mspec and ROI files will be saved in the same directory as the .json files and source images. These must stay in the same directory for other micaToolbox features to work.
+
+![batch_gen_s7](https://user-images.githubusercontent.com/44889226/168400997-7fd564df-00f0-4d3f-a436-be11787897d7.png)
 
 You can follow this Youtube tutorial to replicate the pattern processing we performed for our paper: https://youtu.be/T62fr25b75M?t=3281
 
@@ -219,8 +252,16 @@ To edit the mask, click on its ROI in the ROI Manager and adjust the mask’s no
 If you would like to add a scale bar to your .mspec image (if, for example, your images did not have a circular color standard for Batch-Mask to detect), you can do so in imageJ.
 
 Click on the “Straight” selector.
+
+![man_sbar_s0](https://user-images.githubusercontent.com/44889226/168401048-8cb1efff-7987-48b6-ada0-2af8aea8d161.png)
+
 Outline an object or portion of an object of known size in the image (e.g., a ruler).
+
+![man_sbar_s1](https://user-images.githubusercontent.com/44889226/168401056-ea7432f2-8641-44f8-802e-92ce304c25c2.png)
+
 Type “S” and enter the length of the scale bar in the window that appears. Make sure your units of measurement are correct. Click “OK”. Type “0” to save the .mspec. If you wish to edit the scale bar, simply delete the scale bar’s ROI from the ROI Manager and create a new one.
+
+![man_sbar_s2](https://user-images.githubusercontent.com/44889226/168401061-6bb7524a-4f0f-4fbf-84b3-750f0bdbabd2.png)
 
 <a name="source"></a>
 # Source Repositories and Software
