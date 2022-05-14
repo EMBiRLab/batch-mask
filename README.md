@@ -210,11 +210,11 @@ Create a new folder and copy or move the non-color-corrected images and .json fi
 
 ![batch_gen_s1](https://user-images.githubusercontent.com/44889226/168400922-e8b05fcb-7143-49d3-b7c1-c442efa62138.png)
 
-In the extracted folder, navigate to "batch-mask-v1.0.2/code/scripts" and open "_Batch_Generate_Multispectral_Images.ijm" in a text editor. On Line 55, set the path to the folder in which the .json files and source images are stored. On Line 56, set resume to "" if starting from the beginning. If resuming from an earlier session, set resume to the name of the image you wish to start from (e.g., "V8.jpg").
+In the extracted folder, navigate to "batch-mask-v1.0.2/software/ImageJ/plugins/Multispectral Imaging/" and open "_Batch_Generate_Multispectral_Images.ijm" in a text editor. On Line 55, set the path to the folder in which the .json files and source images are stored. On Line 56, set resume to "" if starting from the beginning. If resuming from an earlier session, set resume to the name of the image you wish to start from (e.g., "V8.jpg").
 
 ![batch_gen_s2](https://user-images.githubusercontent.com/44889226/168400928-f67b0d03-aa79-4a31-9a6d-be59e09afb15.png)
 
-In the extraected folder, navigate to "batch-mask-v1.0.2/code/scripts/JSON ROI/" and open "mica_import.py" in a text editor.
+In the extracted folder, navigate to "batch-mask-v1.0.2/software/ImageJ/plugins/JSON ROI/" and open "mica_import.py" in a text editor.
 
 On Line 31, set the directory variable to the folder in which the json files and source images are stored.
 
